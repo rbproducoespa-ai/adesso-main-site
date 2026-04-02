@@ -1,0 +1,7 @@
+.vercel
+node_modules/
+.next/
+.env*.local
+*.tsbuildinfo
+files-list.json
+download-source.mjs
