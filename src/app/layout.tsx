@@ -1,57 +1,61 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppWidget } from "@/components/ui/WhatsAppWidget";
-import { MetaPixel } from "@/components/ui/MetaPixel";
-import { GoogleAnalytics } from "@/components/ui/GoogleAnalytics";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ADESSO Digital — Exhibition, Automation & Lead Intelligence",
+  title: "Adesso — AI Infrastructure for the Exhibition Industry",
   description:
-    "A UK digital services company operating across exhibition stand design, business automation, lead intelligence products, and digital product development.",
+    "Adesso is building a data-driven platform for exhibition intelligence, AI stand generation, and workflow automation. UK-based, European scale.",
   openGraph: {
-    title: "ADESSO Digital — Exhibition, Automation & Lead Intelligence",
-    description: "Exhibition design, automation systems, lead intelligence, and digital products for B2B companies across the UK and Europe.",
+    title: "Adesso — AI Infrastructure for the Exhibition Industry",
+    description:
+      "Adesso is building a data-driven platform for exhibition intelligence, AI stand generation, and workflow automation. UK-based, European scale.",
+    url: "https://www.adessoexhibition.co.uk",
+    siteName: "Adesso",
     type: "website",
-    siteName: "ADESSO Digital",
     locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ADESSO Digital",
-    description: "Exhibition design, automation systems, lead intelligence, and digital products.",
+    title: "Adesso — AI Infrastructure for the Exhibition Industry",
+    description:
+      "AI-powered platform for exhibition intelligence, stand generation, and workflow automation.",
   },
   alternates: {
-    canonical: "https://adesso.digital",
+    canonical: "https://www.adessoexhibition.co.uk",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white text-[#111111]`}>
-        <MetaPixel />
-        <GoogleAnalytics />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} font-sans antialiased bg-[#04040A] text-[#F0F4FF]`}
+      >
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
-        <WhatsAppWidget />
       </body>
     </html>
   );

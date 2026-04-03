@@ -1,179 +1,294 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { getPageContent, getContent } from "@/lib/content";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About — ADESSO Digital",
-  description: "The story behind ADESSO: a digital studio built on exhibition industry experience, operational discipline, and a belief that most agencies over-promise.",
-  openGraph: {
-    title: "About ADESSO Digital",
-    description: "Founded by an exhibition professional with 10+ years on European trade show floors. Direct, founder-led, and built for long-term client relationships.",
-    type: "website",
-    siteName: "ADESSO Digital",
-    locale: "en_GB",
-  },
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Building2, Globe, TrendingUp } from "lucide-react";
+
+/* ── Animation helpers ─────────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: "easeOut" },
+  }),
 };
 
-const steps = [
-  { n: "01", title: "Brief & Discovery",    body: "We start by understanding your business, audience, and objectives — before touching any design or code." },
-  { n: "02", title: "Strategy & Proposal",  body: "A clear scope, timeline, and investment summary. No surprises." },
-  { n: "03", title: "Build & Review",       body: "Iterative delivery with regular check-ins. You see work in progress, not just a final reveal." },
-  { n: "04", title: "Launch & Support",     body: "Go-live, handover, and 30-day post-launch support included as standard." },
-];
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
 
-const values = [
-  { n: "01", title: "No Vanity Metrics",    body: "We measure what moves your business. Not impressions, not reach — qualified leads, revenue, conversions." },
-  { n: "02", title: "Operational Honesty",  body: "If something won't work or isn't right for you, we say so. Straightforward advice over comfortable agreement." },
-  { n: "03", title: "Quality Over Volume",  body: "We take on a limited number of clients at a time to maintain craft standards. We are not a production line." },
-  { n: "04", title: "European Market Depth", body: "We understand the exhibition circuit, the trade show calendar, and the commercial rhythms of B2B Europe." },
-  { n: "05", title: "Lean & Effective",     body: "No account managers, no layers. You work directly with the people building your project." },
-  { n: "06", title: "Long-Term Thinking",   body: "We'd rather be your agency for five years than close a deal and disappear." },
-];
-
-export default async function AboutPage() {
-  const c = await getPageContent("main", "about");
-  const g = (section: string, key: string) => getContent(c, "about", section, key);
-
+/* ── Sub-components ─────────────────────────────────────────────────────────── */
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <main>
-      {/* ── Hero — dark with image ── */}
-      <section className="relative min-h-[70vh] flex items-end bg-[#111111] pt-[72px] overflow-hidden">
-        <img
-          src={g("hero", "image")}
-          alt="ADESSO Digital studio"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-25"
-          aria-hidden="true"
+    <span className="section-label">{children}</span>
+  );
+}
+
+/* ── ABOUT PAGE ──────────────────────────────────────────────────────────────── */
+export default function AboutPage() {
+  return (
+    <>
+      {/* ── SECTION 1: HERO ───────────────────────────────────────────────────── */}
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden bg-[#04040A] pt-[72px]">
+        {/* Grid background */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(0,102,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,102,255,0.05) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent" />
-        <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12 py-16 lg:py-20 z-10 w-full">
-          <div className="max-w-3xl">
-            <span className="eyebrow">About ADESSO</span>
-            <h1 className="headline-display text-white mb-6" style={{ lineHeight: "1.05" }}>
-              {g("hero", "title1")}<br />
-              <em className="not-italic text-[#8C7355]">{g("hero", "accent")}</em>
-            </h1>
-            <p className="body-lead text-white/60 max-w-2xl whitespace-pre-line">
-              {g("hero", "subtitle")}
-            </p>
-          </div>
+        {/* Radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(0,102,255,0.12),transparent)]" />
+
+        <div className="container-max relative z-10 py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <SectionLabel>About Adesso</SectionLabel>
+          </motion.div>
+
+          <motion.h1
+            className="heading-xl max-w-4xl mb-8"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+          >
+            Building the digital infrastructure the exhibition industry never had.
+          </motion.h1>
+
+          <motion.p
+            className="text-2xl italic text-[#F0F4FF] max-w-3xl leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            &ldquo;A unified platform connecting opportunity discovery, intelligent design, and commercial delivery — purpose-built for the exhibition industry.&rdquo;
+          </motion.p>
         </div>
       </section>
 
-      {/* ── Story — split with image ── */}
-      <section className="bg-white border-b border-[#E2DFDA]">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Image */}
-          <div className="relative aspect-[4/3] lg:aspect-auto min-h-[420px] overflow-hidden">
-            <img
-              src={g("story", "image")}
-              alt="Exhibition hall with stands"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[#111111]/10" />
-          </div>
-          {/* Text */}
-          <div className="px-8 py-16 lg:px-16 lg:py-20 flex flex-col justify-center">
-            <span className="eyebrow">The Story</span>
-            <h2 className="headline-xl mb-8">{g("story", "title")}</h2>
-            <div className="space-y-5 body-lead">
-              <p>
-                After years working across European exhibition floors — managing stand builds, coordinating
-                logistics teams, and helping brands present themselves at trade shows — Bruno noticed that
-                the digital layer of the industry was still largely broken. Companies spending £50,000 on
-                a stand had no digital strategy, no follow-up system, and no way to measure who actually
-                visited them.
-              </p>
-              <p>
-                ADESSO was created to close that gap: to be the digital partner that exhibition companies,
-                B2B brands, and European businesses actually needed. Not a generalist agency, but one with
-                deep sector knowledge and a bias toward execution over presentation.
-              </p>
-              <p>
-                Today the company operates across four divisions — Exhibition, Automation, Lead Intelligence,
-                and Lab — each addressing a different layer of the same problem: helping businesses build,
-                scale, and perform in competitive markets.
-              </p>
+      {/* ── SECTION 2: COMPANY STORY ──────────────────────────────────────────── */}
+      <section className="section-pad bg-[#04040A] border-t border-[#1A2540]">
+        <div className="container-max">
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div>
+              <SectionLabel>Our Story</SectionLabel>
+              <h2 className="heading-lg mb-8">Why Adesso Exists</h2>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── How we work ── */}
-      <section className="section-pad bg-[#F5F4F1]">
-        <div className="container-xl">
-          <div className="mb-14">
-            <span className="eyebrow">How We Work</span>
-            <h2 className="headline-xl max-w-lg">A clear process.<br />No surprises.</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2DFDA]">
-            {steps.map((s) => (
-              <div key={s.n} className="bg-[#F5F4F1] p-8 hover:bg-white transition-colors">
-                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#8C7355] block mb-3">{s.n}</span>
-                <h3 className="headline-md mb-3">{s.title}</h3>
-                <p className="body-base">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Values — dark ── */}
-      <section className="section-pad bg-[#111111]">
-        <div className="container-xl">
-          <div className="mb-14">
-            <span className="eyebrow">What We Stand For</span>
-            <h2 className="headline-xl text-white">Six principles.<br />Non-negotiable.</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-white/10">
-            {values.map((v, i) => (
-              <div
-                key={v.n}
-                className={`py-8 pr-8 border-b border-white/10 ${
-                  (i + 1) % 3 !== 0 ? "lg:border-r lg:border-white/10" : ""
-                }`}
+            <div className="space-y-6">
+              <motion.p
+                className="body-lead"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#8C7355] block mb-3">{v.n}</span>
-                <h3 className="text-white font-semibold text-lg mb-2 leading-snug">{v.title}</h3>
-                <p className="text-[#A0A0A0] text-sm leading-relaxed">{v.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                Adesso was founded to solve a fundamental gap in the exhibition industry: the absence
+                of a unified digital system connecting opportunity discovery, intelligent design, and
+                commercial delivery.
+              </motion.p>
 
-      {/* ── Founder photo strip ── */}
-      <section className="bg-white border-t border-[#E2DFDA]">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="px-8 py-16 lg:px-16 lg:py-20 flex flex-col justify-center order-2 lg:order-1">
-            <span className="eyebrow">The Founder</span>
-            <h2 className="headline-xl mb-6">{g("founder", "name")}</h2>
-            <p className="body-lead mb-8 whitespace-pre-line">{g("founder", "bio")}</p>
-            <div className="flex flex-col gap-3">
-              <a href={`https://wa.me/${g("founder", "whatsapp")}`} target="_blank" rel="noopener noreferrer"
-                className="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#8C7355] border-b border-[#8C7355] pb-0.5 hover:text-[#111111] hover:border-[#111111] transition-colors w-fit">
-                Message directly →
-              </a>
+              <motion.p
+                className="body-lead"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                While industries such as real estate, finance, and e-commerce have undergone complete
+                digital transformation — with platforms, data layers, and automation as standard —
+                the exhibition sector remains largely manual and fragmented. Event organisers, stand
+                builders, and exhibiting brands all operate in silos, with no shared intelligence
+                infrastructure.
+              </motion.p>
+
+              <motion.p
+                className="body-lead"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                Adesso is building a scalable platform that integrates data intelligence, artificial
+                intelligence, and workflow automation to connect every stage of the exhibition process.
+                From identifying the right exhibitors to generating stand concepts and managing
+                commercial pipeline — Adesso provides the complete digital layer exhibition
+                professionals have needed for decades.
+              </motion.p>
             </div>
-          </div>
-          <div className="relative aspect-[4/3] lg:aspect-auto min-h-[400px] overflow-hidden order-1 lg:order-2">
-            <img
-              src={g("founder", "image")}
-              alt={`${g("founder", "name")} — Founder`}
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="section-pad-sm bg-[#F5F4F1] border-t border-[#E2DFDA]">
-        <div className="container-xl text-center">
-          <span className="eyebrow">Work With Us</span>
-          <h2 className="headline-xl mb-6">Ready to start?</h2>
-          <p className="body-lead max-w-lg mx-auto mb-8">Tell us what you're building. We'll tell you if — and how — we can help.</p>
-          <Link href="/contact" className="btn-primary">Start a Conversation</Link>
+      {/* ── SECTION 3: WHY THIS MATTERS ───────────────────────────────────────── */}
+      <section className="section-pad bg-[#080D1A]">
+        <div className="container-max">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionLabel>Market Context</SectionLabel>
+            <h2 className="heading-lg">Why This Matters</h2>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                icon: <TrendingUp className="w-6 h-6 text-[#0066FF]" />,
+                stat: "€48 Billion",
+                statColor: "text-gradient-accent",
+                title: "Global Market Scale",
+                body: "The global exhibition industry generates over €48 billion in annual revenue — yet operates almost entirely on manual processes and fragmented workflows.",
+              },
+              {
+                icon: <Globe className="w-6 h-6 text-[#F0F4FF]" />,
+                stat: "Fragmented",
+                statColor: "text-[#F0F4FF]",
+                title: "No Dominant Platform",
+                body: "No dominant digital platform exists across the exhibition sector. Unlike real estate or finance, there is no shared data layer, no automation standard, no intelligence infrastructure.",
+              },
+              {
+                icon: <Building2 className="w-6 h-6 text-[#00E5A0]" />,
+                stat: "Timing",
+                statColor: "text-[#00E5A0]",
+                title: "Critical Window",
+                body: "Post-pandemic digitisation urgency creates a critical window. The industry is actively seeking technological solutions — and there is no established incumbent to displace.",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.title}
+                custom={i}
+                variants={fadeUp}
+                className="card-base flex flex-col"
+              >
+                <div className="w-11 h-11 flex items-center justify-center bg-[#080D1A] border border-[#1A2540] rounded-sm mb-6">
+                  {card.icon}
+                </div>
+                <p className={`font-mono text-3xl font-bold mb-2 ${card.statColor}`}>
+                  {card.stat}
+                </p>
+                <h3 className="heading-sm mb-3">{card.title}</h3>
+                <p className="body-base flex-1">{card.body}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
-    </main>
+
+      {/* ── SECTION 4: REGISTERED BUSINESS INFO ───────────────────────────────── */}
+      <section className="section-pad bg-[#04040A]">
+        <div className="container-max">
+          <motion.div
+            className="max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionLabel>Company Details</SectionLabel>
+            <h2 className="heading-lg mb-10">Registered Business</h2>
+          </motion.div>
+
+          <motion.div
+            className="max-w-2xl bg-[#0D1525] border border-[#1A2540] rounded-sm overflow-hidden"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            {/* Panel header */}
+            <div className="px-8 py-5 border-b border-[#1A2540] bg-[#080D1A] flex items-center gap-3">
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#1A2540]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#1A2540]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#1A2540]" />
+              </div>
+              <span className="text-[11px] font-mono text-[#4A5A7A] uppercase tracking-widest">
+                company_profile.json
+              </span>
+            </div>
+
+            {/* Info rows */}
+            <div className="divide-y divide-[#1A2540]">
+              {[
+                { label: "Legal Name", value: "ADESSO DIGITAL LTD" },
+                { label: "Registered In", value: "England & Wales" },
+                { label: "Operating From", value: "London, United Kingdom" },
+                { label: "Market Focus", value: "European B2B Exhibition Market" },
+                { label: "Stage", value: "Early-stage / Pre-seed" },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 px-8 py-5"
+                >
+                  <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#4A5A7A] sm:w-48 flex-shrink-0">
+                    {row.label}
+                  </span>
+                  <span className="font-semibold text-[#F0F4FF] text-[15px]">{row.value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: CTA ────────────────────────────────────────────────────── */}
+      <section className="section-pad relative overflow-hidden bg-[#080D1A]">
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(0,102,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,102,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_100%,rgba(0,102,255,0.1),transparent)]" />
+
+        <div className="container-max relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <SectionLabel>Early Access</SectionLabel>
+            <h2 className="heading-lg mb-6">Join the Early Access Programme</h2>
+            <p className="body-lead max-w-xl mx-auto mb-10">
+              Be among the first exhibition professionals to access Adesso&apos;s platform. Limited
+              early access available for UK and European industry leaders.
+            </p>
+            <Link href="/contact" className="btn-primary text-base px-10 py-4">
+              Get Early Access
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="text-[12px] text-[#4A5A7A] mt-4 font-mono">
+              No commitment required. We&apos;ll be in touch within 24 hours.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

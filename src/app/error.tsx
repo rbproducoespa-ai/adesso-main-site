@@ -15,24 +15,33 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white pt-[72px]">
-      <div className="mx-auto max-w-[600px] px-6 text-center py-32">
-        <span className="eyebrow">Something went wrong</span>
-        <h1 className="headline-xl mb-4">An unexpected error occurred.</h1>
-        <p className="body-lead mb-10">
-          We&apos;ve been notified and are looking into it. Please try again or contact us if the issue persists.
+    <div className="min-h-screen flex items-center justify-center bg-[#04040A] text-center px-6 pt-[72px]">
+      <div className="max-w-md">
+        <p className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#0066FF] mb-4">
+          Something went wrong
         </p>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <button onClick={reset} className="btn-primary">Try Again</button>
-          <Link href="/" className="btn-outline">Return to Home</Link>
+        <h1 className="font-display text-3xl font-bold text-[#F0F4FF] mb-4">
+          An unexpected error occurred.
+        </h1>
+        <p className="text-[#8899BB] mb-10">
+          We&apos;ve been notified and are looking into it. Please try again or contact us if the
+          issue persists.
+        </p>
+        <div className="flex items-center justify-center gap-4">
+          <button
+            onClick={reset}
+            className="bg-[#0066FF] text-white text-sm font-semibold px-6 py-3 rounded-sm hover:bg-[#0052CC] transition-colors"
+          >
+            Try Again
+          </button>
+          <Link
+            href="/"
+            className="border border-[#1A2540] text-[#F0F4FF] text-sm font-semibold px-6 py-3 rounded-sm hover:border-[#0066FF]/40 transition-colors"
+          >
+            Return Home
+          </Link>
         </div>
-        <p className="mt-8 text-[11px] text-[#ABABAB]">
-          Need immediate help?{" "}
-          <a href="mailto:hello@adesso.digital" className="text-[#8C7355] hover:underline">
-            hello@adesso.digital
-          </a>
-        </p>
       </div>
-    </main>
+    </div>
   );
 }
