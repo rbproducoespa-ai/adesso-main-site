@@ -8,7 +8,7 @@ import { Mail, MapPin, Clock, CheckCircle2, AlertCircle, ArrowRight } from "luci
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
 };
 
 const stagger = {

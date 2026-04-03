@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2, XCircle, MinusCircle } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
 };
 
 const stagger = {
