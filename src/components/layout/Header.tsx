@@ -3,19 +3,22 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { LangSwitcher } from "@/components/ui/LangSwitcher";
+import { useI18n } from "@/lib/i18n";
 
 const navLinks = [
-  { label: "Platform", href: "/platform" },
-  { label: "Technology", href: "/technology" },
-  { label: "Roadmap", href: "/roadmap" },
-  { label: "Why Adesso", href: "/why-adesso" },
-  { label: "About", href: "/about" },
+  { key: "nav.platform",   href: "/platform" },
+  { key: "nav.technology", href: "/technology" },
+  { key: "nav.roadmap",    href: "/roadmap" },
+  { key: "nav.why_adesso", href: "/why-adesso" },
+  { key: "nav.about",      href: "/about" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { t } = useI18n();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 12);
@@ -61,7 +64,7 @@ export function Header() {
                       : "text-[#8899BB] hover:text-[#F0F4FF]"
                   }`}
                 >
-                  {l.label}
+                  {t(l.key)}
                   {pathname === l.href && (
                     <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#0066FF] rounded-full" />
                   )}
@@ -69,14 +72,15 @@ export function Header() {
               ))}
             </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Desktop CTA + Lang */}
+            <div className="hidden lg:flex items-center gap-3">
+              <LangSwitcher />
               <Link
                 href="/contact"
                 className="bg-[#0066FF] text-white text-[13px] font-semibold px-5 py-2.5 rounded-sm hover:bg-[#0052CC] transition-colors duration-200"
                 aria-label="Request early access"
               >
-                Request Access
+                {t("nav.cta")}
               </Link>
             </div>
 
@@ -125,15 +129,18 @@ export function Header() {
                 pathname === l.href ? "text-[#F0F4FF]" : "text-[#8899BB]"
               }`}
             >
-              {l.label}
+              {t(l.key)}
             </Link>
           ))}
-          <div className="pt-8">
+          <div className="pt-6 flex items-center justify-between">
+            <LangSwitcher />
+          </div>
+          <div className="pt-4">
             <Link
               href="/contact"
               className="block w-full text-center bg-[#0066FF] text-white text-[14px] font-semibold px-6 py-4 rounded-sm hover:bg-[#0052CC] transition-colors"
             >
-              Request Early Access
+              {t("hero.cta_primary")}
             </Link>
           </div>
         </div>

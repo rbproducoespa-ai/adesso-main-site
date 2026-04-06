@@ -13,6 +13,7 @@ import {
   Zap,
 } from "lucide-react";
 import Image from "next/image";
+import { useI18n } from "@/lib/i18n";
 
 /* ── Animation helpers ─────────────────────────────────────────────────────── */
 const fadeUp = {
@@ -40,6 +41,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 /* ── HOMEPAGE ────────────────────────────────────────────────────────────────── */
 export default function HomePage() {
+  const { t } = useI18n();
+
   return (
     <>
       {/* ── SECTION 1: HERO ───────────────────────────────────────────────────── */}
@@ -65,7 +68,7 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 border border-[#0066FF]/30 bg-[#0066FF]/10 text-[#00D4FF] text-[12px] font-mono px-4 py-2 rounded-full mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] animate-pulse" />
-            Now in Early Access — UK Innovator Founder Programme
+            {t("hero.badge")}
           </motion.div>
 
           {/* H1 */}
@@ -75,9 +78,9 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            AI Infrastructure
+            {t("hero.h1_line1")}
             <br />
-            <span className="text-[#8899BB]">for the Exhibition Industry</span>
+            <span className="text-[#8899BB]">{t("hero.h1_line2")}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -87,9 +90,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Adesso is building a data-driven platform that enables companies to discover exhibition
-            opportunities, generate AI-powered stand concepts, and deliver projects through
-            intelligent automation — at scale.
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* CTAs */}
@@ -100,11 +101,11 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Link href="/contact" className="btn-primary text-base px-8 py-4">
-              Request Early Access
+              {t("hero.cta_primary")}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/platform" className="btn-outline text-base px-8 py-4">
-              See the Platform →
+              {t("hero.cta_secondary")}
             </Link>
           </motion.div>
 
@@ -116,9 +117,9 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.45 }}
           >
             {[
-              { value: "€48B", label: "Global Market" },
-              { value: "Manual", label: "Current State" },
-              { value: "2026", label: "UK Launch" },
+              { value: t("hero.stat1_value"), label: t("hero.stat1_label") },
+              { value: t("hero.stat2_value"), label: t("hero.stat2_label") },
+              { value: t("hero.stat3_value"), label: t("hero.stat3_label") },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <p className="font-mono text-2xl font-bold text-[#F0F4FF]">{s.value}</p>
@@ -214,10 +215,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[#4A5A7A] line-through">Not an agency. Not a freelancer.</span>
+            <span className="text-[#4A5A7A] line-through">{t("positioning.strikethrough")}</span>
             {" "}
             <span className="text-[#F0F4FF]">
-              A scalable technology platform transforming how exhibitions are planned and delivered.
+              {t("positioning.statement")}
             </span>
           </motion.p>
         </div>
@@ -233,20 +234,12 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <SectionLabel>The Problem</SectionLabel>
+            <SectionLabel>{t("problem.label")}</SectionLabel>
             <h2 className="heading-lg mb-6 max-w-2xl">
-              A Multi-Billion Industry Running on Manual Processes
+              {t("problem.h2")}
             </h2>
-            <p className="body-lead max-w-3xl">
-              The global exhibition industry generates over €48 billion in annual revenue. Yet the
-              workflows that drive it — lead sourcing, stand design, contractor coordination,
-              follow-up — remain entirely manual, fragmented, and disconnected.
-            </p>
-            <p className="body-lead max-w-3xl mt-4">
-              Companies spend £40,000–£80,000 on a single exhibition stand with no digital strategy,
-              no automated follow-up, and no intelligence layer to measure ROI. The problem isn&apos;t
-              budget. It&apos;s infrastructure.
-            </p>
+            <p className="body-lead max-w-3xl">{t("problem.body1")}</p>
+            <p className="body-lead max-w-3xl mt-4">{t("problem.body2")}</p>
           </motion.div>
 
           <motion.div
@@ -259,18 +252,18 @@ export default function HomePage() {
             {[
               {
                 icon: <Database className="w-5 h-5 text-[#0066FF]" />,
-                title: "Fragmented Discovery",
-                body: "No centralised system to identify the right exhibitions or target the right exhibitors. Sales teams rely on trade publications and word of mouth.",
+                title: t("problem.card1_title"),
+                body: t("problem.card1_body"),
               },
               {
                 icon: <Layers className="w-5 h-5 text-[#0066FF]" />,
-                title: "Slow Concept Cycles",
-                body: "Stand design approval takes weeks of manual iteration, delaying sales cycles. Every revision requires designer time, email chains, and physical reviews.",
+                title: t("problem.card2_title"),
+                body: t("problem.card2_body"),
               },
               {
                 icon: <Zap className="w-5 h-5 text-[#0066FF]" />,
-                title: "Zero Commercial Layer",
-                body: "Post-exhibition, companies have no automation to convert contacts into pipeline. Thousands of leads collected on stands go unworked.",
+                title: t("problem.card3_title"),
+                body: t("problem.card3_body"),
               },
             ].map((card) => (
               <motion.div key={card.title} variants={fadeUp} className="card-base">
@@ -295,13 +288,9 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <SectionLabel>The Solution</SectionLabel>
-            <h2 className="heading-lg mb-6">A Unified Digital Layer for Exhibitions</h2>
-            <p className="body-lead max-w-2xl mx-auto">
-              Adesso integrates data intelligence, artificial intelligence, and workflow automation
-              into a single platform. From opportunity discovery through to stand delivery and
-              post-show pipeline management — in one system.
-            </p>
+            <SectionLabel>{t("solution.label")}</SectionLabel>
+            <h2 className="heading-lg mb-6">{t("solution.h2")}</h2>
+            <p className="body-lead max-w-2xl mx-auto">{t("solution.body")}</p>
           </motion.div>
 
           {/* Flow diagram */}
@@ -355,8 +344,8 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <SectionLabel>The Platform</SectionLabel>
-            <h2 className="heading-lg">Four Modules. One Integrated System.</h2>
+            <SectionLabel>{t("modules.label")}</SectionLabel>
+            <h2 className="heading-lg">{t("modules.h2")}</h2>
           </motion.div>
 
           <motion.div
@@ -370,33 +359,33 @@ export default function HomePage() {
               {
                 num: "01",
                 icon: <Database className="w-5 h-5 text-[#0066FF]" />,
-                title: "Exhibition Lead Intelligence",
-                body: "Structured data from European exhibitions — exhibitor profiles, event insights, decision-maker contacts, and targeted lead scoring. Updated continuously.",
-                tag: "Live",
+                title: t("modules.m01_title"),
+                body: t("modules.m01_body"),
+                tag: t("modules.m01_tag"),
                 tagColor: "badge-live",
               },
               {
                 num: "02",
                 icon: <Sparkles className="w-5 h-5 text-[#00D4FF]" />,
-                title: "AI Stand Concept Generator",
-                body: "Generate exhibition stand concepts using AI in minutes. Trained on thousands of exhibition environments. Accelerates sales cycles and client approval rates.",
-                tag: "Beta",
+                title: t("modules.m02_title"),
+                body: t("modules.m02_body"),
+                tag: t("modules.m02_tag"),
                 tagColor: "badge-beta",
               },
               {
                 num: "03",
                 icon: <Workflow className="w-5 h-5 text-[#00E5A0]" />,
-                title: "Automation & Pipeline CRM",
-                body: "Unified system for managing leads, automating outreach sequences, and tracking project pipelines from initial contact to post-show follow-up.",
-                tag: "Live",
+                title: t("modules.m03_title"),
+                body: t("modules.m03_body"),
+                tag: t("modules.m03_tag"),
                 tagColor: "badge-live",
               },
               {
                 num: "04",
                 icon: <Globe className="w-5 h-5 text-[#8899BB]" />,
-                title: "Exhibition Marketplace",
-                body: "A two-sided marketplace connecting brands, stand designers, and builders across Europe. Verified supplier network with integrated project management.",
-                tag: "2027",
+                title: t("modules.m04_title"),
+                body: t("modules.m04_body"),
+                tag: t("modules.m04_tag"),
                 tagColor: "badge-planned",
               },
             ].map((mod) => (
@@ -424,7 +413,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Link href="/platform" className="btn-outline">
-              Full Platform Overview →
+              {t("modules.link")}
             </Link>
           </motion.div>
         </div>
@@ -440,13 +429,9 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <SectionLabel>Business Model</SectionLabel>
-            <h2 className="heading-lg mb-6 max-w-xl">Built for Scale</h2>
-            <p className="body-lead max-w-3xl">
-              Adesso operates on a subscription-based model, providing tiered access to data
-              intelligence, AI tools, and automation systems. Revenue is diversified across SaaS
-              subscriptions, premium data services, and marketplace transaction fees.
-            </p>
+            <SectionLabel>{t("biz.label")}</SectionLabel>
+            <h2 className="heading-lg mb-6 max-w-xl">{t("biz.h2")}</h2>
+            <p className="body-lead max-w-3xl">{t("biz.body")}</p>
           </motion.div>
 
           <motion.div
@@ -459,18 +444,18 @@ export default function HomePage() {
             {[
               {
                 icon: <TrendingUp className="w-5 h-5 text-[#0066FF]" />,
-                title: "SaaS Subscriptions",
-                body: "Monthly and annual platform access across Starter, Growth, and Enterprise tiers. Recurring, predictable revenue from day one.",
+                title: t("biz.p1_title"),
+                body: t("biz.p1_body"),
               },
               {
                 icon: <Database className="w-5 h-5 text-[#00D4FF]" />,
-                title: "Data Products",
-                body: "Premium lead databases, sector intelligence reports, and exhibitor data packs. High-margin data products sold independently of platform access.",
+                title: t("biz.p2_title"),
+                body: t("biz.p2_body"),
               },
               {
                 icon: <Globe className="w-5 h-5 text-[#00E5A0]" />,
-                title: "Marketplace Fees",
-                body: "Transaction-based revenue from supplier connections and project placements on the Exhibition Marketplace. Scales with platform usage and network growth.",
+                title: t("biz.p3_title"),
+                body: t("biz.p3_body"),
               },
             ].map((pillar) => (
               <motion.div key={pillar.title} variants={fadeUp} className="card-base">
@@ -495,8 +480,8 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <SectionLabel>Traction</SectionLabel>
-            <h2 className="heading-lg">Early Signals</h2>
+            <SectionLabel>{t("traction.label")}</SectionLabel>
+            <h2 className="heading-lg">{t("traction.h2")}</h2>
           </motion.div>
 
           <motion.div
@@ -507,10 +492,10 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             {[
-              { value: "3,200+", label: "Exhibition data points indexed" },
-              { value: "€48B", label: "Addressable market" },
-              { value: "47", label: "Early access registrations" },
-              { value: "12", label: "Countries covered" },
+              { value: t("traction.m1_val"), label: t("traction.m1_lbl") },
+              { value: t("traction.m2_val"), label: t("traction.m2_lbl") },
+              { value: t("traction.m3_val"), label: t("traction.m3_lbl") },
+              { value: t("traction.m4_val"), label: t("traction.m4_lbl") },
             ].map((metric) => (
               <motion.div
                 key={metric.label}
@@ -532,11 +517,10 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-xl text-[#F0F4FF] font-display italic leading-relaxed mb-4">
-              &ldquo;The exhibition industry is ready for this. We&apos;ve been waiting for someone
-              to build the infrastructure layer.&rdquo;
+              &ldquo;{t("traction.quote")}&rdquo;
             </p>
             <footer className="text-sm text-[#4A5A7A] font-mono">
-              — Beta User, UK Event Marketing Director
+              — {t("traction.author")}
             </footer>
           </motion.blockquote>
         </div>
@@ -551,11 +535,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <SectionLabel>Vision</SectionLabel>
-            <h2 className="heading-lg mb-8">Our Vision</h2>
+            <SectionLabel>{t("vision.label")}</SectionLabel>
+            <h2 className="heading-lg mb-8">{t("vision.h2")}</h2>
             <p className="font-display text-2xl md:text-3xl text-[#F0F4FF] italic max-w-3xl mx-auto leading-relaxed">
-              &ldquo;To become the leading digital infrastructure powering
-              the global exhibition industry.&rdquo;
+              &ldquo;{t("vision.statement")}&rdquo;
             </p>
           </motion.div>
         </div>
@@ -590,31 +573,21 @@ export default function HomePage() {
 
             {/* Bio */}
             <div>
-              <SectionLabel>Founder</SectionLabel>
-              <h2 className="heading-lg mb-2">Bruno Castro</h2>
-              <p className="text-sm font-mono text-[#0066FF] mb-6">Founder &amp; CEO, Adesso</p>
+              <SectionLabel>{t("founder.label")}</SectionLabel>
+              <h2 className="heading-lg mb-2">{t("founder.name")}</h2>
+              <p className="text-sm font-mono text-[#0066FF] mb-6">{t("founder.title")}</p>
               <div className="space-y-4 body-lead">
-                <p>
-                  Bruno Castro spent over a decade working on European exhibition floors — managing
-                  stand builds, coordinating logistics, and helping B2B brands present at trade shows
-                  from London to Frankfurt.
-                </p>
-                <p>
-                  What he identified was consistent: an industry generating billions annually with no
-                  digital infrastructure. No intelligence layer. No automation. No scalable systems.
-                </p>
-                <p>
-                  Adesso was founded to build that infrastructure — starting with the UK, scaling
-                  across Europe.
-                </p>
+                <p>{t("founder.bio1")}</p>
+                <p>{t("founder.bio2")}</p>
+                <p>{t("founder.bio3")}</p>
               </div>
 
               <ul className="mt-8 space-y-3">
                 {[
-                  "10+ years exhibition industry experience",
-                  "Technical specialist: CAD, LED systems, event production",
-                  "UK-based, EU market expertise",
-                  "Registered company: England & Wales",
+                  t("founder.cred1"),
+                  t("founder.cred2"),
+                  t("founder.cred3"),
+                  t("founder.cred4"),
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 text-[#00E5A0] flex-shrink-0 mt-0.5" />
@@ -646,17 +619,14 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <SectionLabel>Early Access</SectionLabel>
-            <h2 className="heading-lg mb-6">Join the Early Access Programme</h2>
-            <p className="body-lead max-w-xl mx-auto mb-10">
-              Be among the first companies to access Adesso&apos;s platform. Limited early access
-              available for UK and European exhibition professionals.
-            </p>
+            <SectionLabel>{t("cta.label")}</SectionLabel>
+            <h2 className="heading-lg mb-6">{t("cta.h2")}</h2>
+            <p className="body-lead max-w-xl mx-auto mb-10">{t("cta.body")}</p>
             <Link href="/contact" className="btn-primary text-base px-10 py-4 text-lg">
-              Request Early Access →
+              {t("cta.button")}
             </Link>
             <p className="text-[12px] text-[#4A5A7A] mt-4 font-mono">
-              No commitment. We&apos;ll reach out within 24 hours.
+              {t("cta.footnote")}
             </p>
           </motion.div>
         </div>

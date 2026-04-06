@@ -20,38 +20,18 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: "Site",
     items: [
-      { href: "/admin",         label: "Dashboard",     icon: "⊞" },
-      { href: "/admin/editor",  label: "Site Editor",   icon: "✏" },
-      { href: "/admin/pages",   label: "Pages",         icon: "⊟" },
-      { href: "/admin/mobile",  label: "Mobile Editor", icon: "◻" },
+      { href: "/admin",        label: "Dashboard",   icon: "⊞" },
+      { href: "/admin/editor", label: "Site Editor", icon: "✏" },
+      { href: "/admin/blog",   label: "Blog",        icon: "≡" },
+      { href: "/admin/media",  label: "Media",       icon: "◈" },
     ],
   },
   {
-    label: "Content",
+    label: "Leads",
     items: [
-      { href: "/admin/media",    label: "Media Manager", icon: "◈" },
-      { href: "/admin/blog",     label: "Blog",          icon: "≡" },
-      { href: "/admin/database", label: "Database",      icon: "⬡" },
-    ],
-  },
-  {
-    label: "Commerce",
-    items: [
-      { href: "/admin/orders",     label: "Orders",     icon: "◻" },
-      { href: "/admin/ecommerce",  label: "Ecommerce",  icon: "⊛" },
-      { href: "/admin/membership", label: "Membership", icon: "◎" },
-    ],
-  },
-  {
-    label: "Marketing",
-    items: [
-      { href: "/admin/contacts",    label: "CRM / Contacts",  icon: "◉" },
-      { href: "/admin/forms",       label: "Forms & Leads",   icon: "⊡" },
-      { href: "/admin/inbox",       label: "Inbox",           icon: "▣" },
-      { href: "/admin/whatsapp",    label: "WhatsApp Agent",  icon: "✆" },
-      { href: "/admin/marketing",   label: "Marketing Tools", icon: "◎" },
-      { href: "/admin/meta",        label: "Meta / Facebook", icon: "◈" },
-      { href: "/admin/automations", label: "Automations",     icon: "⟳" },
+      { href: "/admin/contacts", label: "CRM / Contacts", icon: "◉" },
+      { href: "/admin/forms",    label: "Forms & Leads",  icon: "⊡" },
+      { href: "/admin/inbox",    label: "Inbox",          icon: "▣" },
     ],
   },
   {
@@ -64,10 +44,9 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: "System",
     items: [
-      { href: "/admin/settings", label: "Settings",      icon: "⚙" },
-      { href: "/admin/roles",    label: "User Roles",    icon: "⊕" },
-      { href: "/admin/plugins",  label: "Apps & Plugins",icon: "⊞" },
-      { href: "/admin/devmode",  label: "Developer Mode",icon: "⌨" },
+      { href: "/admin/settings", label: "Settings",       icon: "⚙" },
+      { href: "/admin/roles",    label: "User Roles",     icon: "⊕" },
+      { href: "/admin/devmode",  label: "Developer Mode", icon: "⌨" },
     ],
   },
 ];
@@ -75,25 +54,25 @@ const NAV_GROUPS: NavGroup[] = [
 const S = {
   shell: {
     position: "fixed" as const, inset: 0, zIndex: 100,
-    display: "flex", background: "#0D0D0D",
+    display: "flex", background: "#04040A",
     fontFamily: "Inter, -apple-system, sans-serif",
   },
   sidebar: {
     width: "232px", minWidth: "232px",
-    background: "#111111",
-    borderRight: "1px solid #1E1E1E",
+    background: "#080D1A",
+    borderRight: "1px solid #1A2540",
     display: "flex", flexDirection: "column" as const,
     overflow: "hidden",
   },
   logo: {
     padding: "18px 18px 16px",
-    borderBottom: "1px solid #1E1E1E",
+    borderBottom: "1px solid #1A2540",
     display: "flex", alignItems: "center", gap: "10px",
     flexShrink: 0,
   },
   logoMark: {
     width: "30px", height: "30px",
-    background: "#8C7355",
+    background: "#0066FF",
     display: "flex", alignItems: "center", justifyContent: "center",
     fontSize: "12px", fontWeight: 800, color: "#fff",
     flexShrink: 0,
@@ -103,20 +82,20 @@ const S = {
     padding: "14px 16px 4px",
     fontSize: "9px", fontWeight: 700,
     letterSpacing: "0.2em", textTransform: "uppercase" as const,
-    color: "#333",
+    color: "#1A2540",
   },
   main: { flex: 1, display: "flex", flexDirection: "column" as const, overflow: "hidden" },
   topbar: {
-    height: "52px", background: "#141414",
-    borderBottom: "1px solid #1E1E1E",
+    height: "52px", background: "#080D1A",
+    borderBottom: "1px solid #1A2540",
     display: "flex", alignItems: "center",
     padding: "0 28px", gap: "12px",
     flexShrink: 0,
   },
-  content: { flex: 1, overflowY: "auto" as const, background: "#0D0D0D" },
+  content: { flex: 1, overflowY: "auto" as const, background: "#04040A" },
   bottomBar: {
     padding: "12px 16px",
-    borderTop: "1px solid #1E1E1E",
+    borderTop: "1px solid #1A2540",
     flexShrink: 0,
   },
 };
@@ -143,12 +122,12 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
       <aside style={{ ...S.sidebar, width: sidebarCollapsed ? "56px" : "232px", transition: "width 0.2s" }}>
 
         {/* Logo */}
-        <a href="/" style={{ ...S.logo, textDecoration: "none" }} title="Voltar ao site">
+        <a href="/" style={{ ...S.logo, textDecoration: "none" }} title="Back to site">
           <div style={S.logoMark}>A</div>
           {!sidebarCollapsed && (
             <div>
-              <p style={{ color: "#fff", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", margin: 0 }}>ADESSO</p>
-              <p style={{ color: "#444", fontSize: "9px", letterSpacing: "0.16em", margin: 0, textTransform: "uppercase" }}>Admin Studio</p>
+              <p style={{ color: "#F0F4FF", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", margin: 0 }}>ADESSO</p>
+              <p style={{ color: "#4A5A7A", fontSize: "9px", letterSpacing: "0.16em", margin: 0, textTransform: "uppercase" }}>Admin Studio</p>
             </div>
           )}
         </a>
@@ -170,9 +149,9 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
                       display: "flex", alignItems: "center",
                       gap: sidebarCollapsed ? 0 : "10px",
                       padding: sidebarCollapsed ? "10px 18px" : "8px 16px",
-                      background: active ? "rgba(140,115,85,0.15)" : "transparent",
-                      borderLeft: active ? "2px solid #8C7355" : "2px solid transparent",
-                      color: active ? "#E8D5BA" : "#555",
+                      background: active ? "rgba(0,102,255,0.12)" : "transparent",
+                      borderLeft: active ? "2px solid #0066FF" : "2px solid transparent",
+                      color: active ? "#F0F4FF" : "#4A5A7A",
                       fontSize: "12px",
                       fontWeight: active ? 600 : 400,
                       textDecoration: "none",
@@ -202,7 +181,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
         {/* Bottom */}
         <div style={S.bottomBar}>
           {!sidebarCollapsed && (
-            <p style={{ color: "#333", fontSize: "10px", margin: "0 0 8px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <p style={{ color: "#4A5A7A", fontSize: "10px", margin: "0 0 8px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {userEmail}
             </p>
           )}
@@ -212,7 +191,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
               target="_blank"
               rel="noreferrer"
               style={{
-                color: "#8C7355", fontSize: "11px", textDecoration: "none",
+                color: "#0066FF", fontSize: "11px", textDecoration: "none",
                 display: "flex", alignItems: "center", gap: "4px",
               }}
               title="View Site"
@@ -241,7 +220,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
             ☰
           </button>
 
-          <h1 style={{ fontSize: "13px", fontWeight: 600, color: "#888", margin: 0, flex: 1 }}>
+          <h1 style={{ fontSize: "13px", fontWeight: 600, color: "#8899BB", margin: 0, flex: 1 }}>
             {currentLabel}
           </h1>
 
@@ -250,7 +229,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
             <Link
               href="/admin/editor"
               style={{
-                background: "#8C7355", color: "#fff",
+                background: "#0066FF", color: "#fff",
                 padding: "6px 14px", fontSize: "10px",
                 fontWeight: 700, textDecoration: "none",
                 letterSpacing: "0.12em", textTransform: "uppercase",
@@ -264,10 +243,11 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
               target="_blank"
               rel="noreferrer"
               style={{
-                background: "#1E1E1E", color: "#777",
+                background: "#0D1525", color: "#8899BB",
                 padding: "6px 12px", fontSize: "10px",
                 fontWeight: 600, textDecoration: "none",
                 letterSpacing: "0.1em", borderRadius: "2px",
+                border: "1px solid #1A2540",
               }}
             >
               ↗ Live
