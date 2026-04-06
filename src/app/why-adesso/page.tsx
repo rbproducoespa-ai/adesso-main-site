@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, XCircle, MinusCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -75,7 +75,7 @@ export default function WhyAdessoPage() {
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="bg-[#04040A] pt-[72px] py-24 md:py-32">
+      <section className="bg-[#04040A] pt-[72px] pb-24 md:pb-32">
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <motion.div
             variants={stagger}

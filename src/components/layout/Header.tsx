@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Platform", href: "/platform" },
   { label: "Technology", href: "/technology" },
   { label: "Roadmap", href: "/roadmap" },
+  { label: "Why Adesso", href: "/why-adesso" },
   { label: "About", href: "/about" },
 ];
 
@@ -71,12 +72,6 @@ export function Header() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <Link
-                href="/why-adesso"
-                className="text-[13px] font-medium text-[#8899BB] hover:text-[#F0F4FF] transition-colors"
-              >
-                Why Adesso
-              </Link>
-              <Link
                 href="/contact"
                 className="bg-[#0066FF] text-white text-[13px] font-semibold px-5 py-2.5 rounded-sm hover:bg-[#0052CC] transition-colors duration-200"
                 aria-label="Request early access"
@@ -133,12 +128,6 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/why-adesso"
-            className="flex items-center py-4 text-[17px] font-medium border-b border-[#1A2540] text-[#8899BB]"
-          >
-            Why Adesso
-          </Link>
           <div className="pt-8">
             <Link
               href="/contact"

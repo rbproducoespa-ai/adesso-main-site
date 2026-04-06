@@ -125,7 +125,9 @@ export default function TechnologyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           >
-            Technology
+            How Adesso Processes,
+            <br />
+            <span className="text-[#8899BB]">Analyses, and Activates Exhibition Data</span>
           </motion.h1>
 
           <motion.p
@@ -134,7 +136,8 @@ export default function TechnologyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            How Adesso processes, analyses, and activates exhibition data at scale.
+            A proprietary AI and data infrastructure stack purpose-built for the exhibition
+            industry — not adapted from generic tools.
           </motion.p>
         </div>
       </section>

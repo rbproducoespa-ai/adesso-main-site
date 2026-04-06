@@ -362,11 +362,11 @@ export default function PlatformPage() {
           >
             <Users className="mx-auto w-10 h-10 text-[#0066FF]" />
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-[#F0F4FF]">
-              Ready to get started?
+              Request Early Access
             </h2>
             <p className="text-[#8899BB] text-base leading-relaxed">
-              Join exhibition professionals already using Adesso to find leads, generate
-              concepts, and close more projects.
+              Join exhibition professionals who are shaping Adesso from the ground up.
+              Limited early access available for UK and European industry professionals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

@@ -37,7 +37,7 @@ export function Logo({ variant = "full", className = "", size = 32, dark = false
       {mark}
       <span
         style={{
-          fontFamily: "Inter, system-ui, sans-serif",
+          fontFamily: "var(--font-geist-sans), Geist, system-ui, sans-serif",
           fontSize: Math.round(size * 0.46),
           fontWeight: 800,
           letterSpacing: "0.18em",

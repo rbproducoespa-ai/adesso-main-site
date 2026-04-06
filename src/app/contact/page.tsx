@@ -125,7 +125,7 @@ export default function ContactPage() {
 
   return (
     <main>
-      <section className="bg-[#04040A] pt-[72px] py-24 md:py-32">
+      <section className="bg-[#04040A] pt-[72px] pb-24 md:pb-32">
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <motion.div
             variants={stagger}
