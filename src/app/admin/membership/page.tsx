@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 
 export const metadata = { title: "Membership — ADESSO Admin" };
 
@@ -17,7 +17,7 @@ export default async function MembershipPage() {
     {
       name: "Client",     price: "Custom",    desc: "Active project clients",
       features: ["Account dashboard", "Order history", "Project files", "Direct support"],
-      color: "#8C7355",
+      color: "#0066FF",
     },
     {
       name: "Partner",    price: "Custom",    desc: "Strategic partners",
@@ -41,7 +41,7 @@ export default async function MembershipPage() {
           target="_blank"
           rel="noreferrer"
           style={{
-            background: "#141414", color: "#8C7355", padding: "9px 16px",
+            background: "#141414", color: "#0066FF", padding: "9px 16px",
             fontSize: "11px", textDecoration: "none", borderRadius: "2px",
             border: "1px solid #252525",
           }}
@@ -53,7 +53,7 @@ export default async function MembershipPage() {
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total Users",   value: totalUsers, color: "#8C7355" },
+          { label: "Total Users",   value: totalUsers, color: "#0066FF" },
           { label: "Active Plans",  value: "3",        color: "#4A6C8C" },
           { label: "Members Area",  value: "Active",   color: "#3D7A4E" },
         ].map(s => (
@@ -112,7 +112,7 @@ export default async function MembershipPage() {
             padding: "11px 20px",
             borderBottom: i < arr.length - 1 ? "1px solid #181818" : "none",
           }}>
-            <code style={{ color: "#8C7355", fontSize: "11px", minWidth: "180px" }}>{r.path}</code>
+            <code style={{ color: "#0066FF", fontSize: "11px", minWidth: "180px" }}>{r.path}</code>
             <p style={{ color: "#555", fontSize: "11px", margin: 0, flex: 1 }}>{r.desc}</p>
             <span style={{
               fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useCallback } from "react";
 
@@ -118,7 +118,7 @@ export default function SEOClient() {
   };
 
   const avgScore = Math.round(pages.reduce((s, p) => s + scoreFor(p), 0) / pages.length);
-  const ScoreColor = (s: number) => s >= 85 ? "#3D7A4E" : s >= 70 ? "#8C7355" : "#8C3535";
+  const ScoreColor = (s: number) => s >= 85 ? "#3D7A4E" : s >= 70 ? "#0066FF" : "#8C3535";
 
   return (
     <div style={{ padding: "28px 32px" }}>
@@ -134,7 +134,7 @@ export default function SEOClient() {
           <a href="/sitemap.xml" target="_blank" rel="noreferrer" style={{ background: "#1A1A1A", color: "#777", padding: "9px 16px", fontSize: "11px", textDecoration: "none", borderRadius: "2px", border: "1px solid #252525" }}>
             ↗ View Sitemap
           </a>
-          <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer" style={{ background: "#141414", color: "#8C7355", padding: "9px 16px", fontSize: "11px", textDecoration: "none", borderRadius: "2px", border: "1px solid #252525" }}>
+          <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer" style={{ background: "#141414", color: "#0066FF", padding: "9px 16px", fontSize: "11px", textDecoration: "none", borderRadius: "2px", border: "1px solid #252525" }}>
             Google Search Console →
           </a>
         </div>
@@ -188,7 +188,7 @@ export default function SEOClient() {
                           onClick={() => savePage(p)}
                           disabled={state === "saving"}
                           style={{
-                            background: "#8C7355", color: "#fff", border: "none",
+                            background: "#0066FF", color: "#fff", border: "none",
                             fontSize: "10px", fontWeight: 700, padding: "5px 14px",
                             borderRadius: "2px", cursor: state === "saving" ? "not-allowed" : "pointer",
                             letterSpacing: "0.1em", textTransform: "uppercase",
@@ -264,7 +264,7 @@ export default function SEOClient() {
                       <button
                         onClick={() => startEdit(p)}
                         style={{
-                          color: "#8C7355", fontSize: "10px", cursor: "pointer",
+                          color: "#0066FF", fontSize: "10px", cursor: "pointer",
                           padding: "4px 10px", background: "rgba(140,115,85,0.1)",
                           borderRadius: "2px", border: "1px solid rgba(140,115,85,0.2)",
                           textAlign: "center",
@@ -314,8 +314,8 @@ export default function SEOClient() {
                   <span style={{
                     fontSize: "8px", fontWeight: 700, letterSpacing: "0.1em",
                     textTransform: "uppercase", padding: "1px 5px", borderRadius: "8px",
-                    color: r.priority === "high" ? "#8C3535" : r.priority === "medium" ? "#8C7355" : "#444",
-                    background: r.priority === "high" ? "#8C353518" : r.priority === "medium" ? "#8C735518" : "#1A1A1A",
+                    color: r.priority === "high" ? "#8C3535" : r.priority === "medium" ? "#0066FF" : "#444",
+                    background: r.priority === "high" ? "#8C353518" : r.priority === "medium" ? "#0066FF18" : "#1A1A1A",
                   }}>{r.priority}</span>
                 </div>
                 <p style={{ color: "#444", fontSize: "10px", margin: 0, lineHeight: 1.5 }}>{r.desc}</p>

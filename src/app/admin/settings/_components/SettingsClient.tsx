@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 
@@ -155,7 +155,7 @@ export function SettingsClient() {
   function saveBg(state: SaveState) {
     if (state === "saved")  return "#2D5A27";
     if (state === "error")  return "#6B2727";
-    return "#8C7355";
+    return "#0066FF";
   }
 
   return (
@@ -215,7 +215,7 @@ export function SettingsClient() {
           <div style={{ background: "#141414", border: "1px solid #1E1E1E", borderRadius: "4px", overflow: "hidden", marginBottom: "20px" }}>
             <div style={{ padding: "14px 20px", borderBottom: "1px solid #1E1E1E" }}>
               <p style={{ color: "#fff", fontSize: "12px", fontWeight: 700, margin: 0 }}>Domains & URLs</p>
-              <p style={{ color: "#444", fontSize: "10px", margin: "3px 0 0" }}>Configure in Vercel dashboard + <code style={{ color: "#8C7355" }}>.env.production</code></p>
+              <p style={{ color: "#444", fontSize: "10px", margin: "3px 0 0" }}>Configure in Vercel dashboard + <code style={{ color: "#0066FF" }}>.env.production</code></p>
             </div>
             {DIVISIONS_CONFIG.map((d) => (
               <div key={d.envKey} style={{
@@ -225,7 +225,7 @@ export function SettingsClient() {
               }}>
                 <p style={{ color: "#555", fontSize: "11px", fontWeight: 600, margin: 0 }}>{d.label}</p>
                 <div>
-                  <p style={{ color: "#8C7355", fontSize: "9px", fontFamily: "monospace", margin: "0 0 2px" }}>{d.envKey}</p>
+                  <p style={{ color: "#0066FF", fontSize: "9px", fontFamily: "monospace", margin: "0 0 2px" }}>{d.envKey}</p>
                   <p style={{ color: "#555", fontSize: "11px", margin: 0, fontFamily: "monospace" }}>{d.placeholder}</p>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export function SettingsClient() {
                 href="https://vercel.com/dashboard"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: "#8C7355", fontSize: "11px", textDecoration: "none" }}
+                style={{ color: "#0066FF", fontSize: "11px", textDecoration: "none" }}
               >
                 Manage in Vercel →
               </a>

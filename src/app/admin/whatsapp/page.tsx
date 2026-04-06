@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { createAdminSupabase } from "@/lib/supabase-admin";
 
 async function getStats() {
@@ -29,8 +29,8 @@ const S = {
   cardVal: { fontSize: "30px", fontWeight: 700, color: "#fff" },
   row: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" },
   section: { background: "#141414", border: "1px solid #1E1E1E", padding: "20px 24px" },
-  sectionTitle: { fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#8C7355", marginBottom: "16px" },
-  btn: { display: "inline-block", background: "#8C7355", color: "#fff", padding: "8px 18px", fontSize: "11px", fontWeight: 700, textDecoration: "none", letterSpacing: "0.12em", textTransform: "uppercase" as const },
+  sectionTitle: { fontSize: "12px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#0066FF", marginBottom: "16px" },
+  btn: { display: "inline-block", background: "#0066FF", color: "#fff", padding: "8px 18px", fontSize: "11px", fontWeight: 700, textDecoration: "none", letterSpacing: "0.12em", textTransform: "uppercase" as const },
   btnGhost: { display: "inline-block", background: "#1E1E1E", color: "#888", padding: "8px 18px", fontSize: "11px", fontWeight: 600, textDecoration: "none", letterSpacing: "0.1em" },
   convRow: { display: "flex", alignItems: "center", gap: "12px", padding: "10px 0", borderBottom: "1px solid #1E1E1E" },
   statusDot: (s: string) => ({
@@ -77,7 +77,7 @@ export default async function WhatsAppOverviewPage() {
         <div style={S.section}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
             <p style={{ ...S.sectionTitle, marginBottom: 0 }}>Conversas recentes</p>
-            <Link href="/admin/whatsapp/conversations" style={{ fontSize: "11px", color: "#8C7355", textDecoration: "none" }}>Ver todas →</Link>
+            <Link href="/admin/whatsapp/conversations" style={{ fontSize: "11px", color: "#0066FF", textDecoration: "none" }}>Ver todas →</Link>
           </div>
           {stats.recent.length === 0 && (
             <p style={{ fontSize: "13px", color: "#444" }}>Nenhuma conversa ainda.</p>
@@ -102,13 +102,13 @@ export default async function WhatsAppOverviewPage() {
         <div style={S.section}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
             <p style={{ ...S.sectionTitle, marginBottom: 0 }}>Fluxos de atendimento</p>
-            <Link href="/admin/whatsapp/flows/new" style={{ fontSize: "11px", color: "#8C7355", textDecoration: "none" }}>+ Novo fluxo</Link>
+            <Link href="/admin/whatsapp/flows/new" style={{ fontSize: "11px", color: "#0066FF", textDecoration: "none" }}>+ Novo fluxo</Link>
           </div>
           {flows.map((f: { id: string; name: string; is_active: boolean }) => (
             <div key={f.id} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 0", borderBottom: "1px solid #1E1E1E" }}>
               <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: f.is_active ? "#22C55E" : "#333", flexShrink: 0 }} />
               <p style={{ flex: 1, fontSize: "13px", color: "#ccc", margin: 0 }}>{f.name}</p>
-              <Link href={`/admin/whatsapp/flows/${f.id}`} style={{ fontSize: "11px", color: "#8C7355", textDecoration: "none" }}>Editar →</Link>
+              <Link href={`/admin/whatsapp/flows/${f.id}`} style={{ fontSize: "11px", color: "#0066FF", textDecoration: "none" }}>Editar →</Link>
             </div>
           ))}
           {flows.length === 0 && <p style={{ fontSize: "13px", color: "#444" }}>Nenhum fluxo encontrado.</p>}
@@ -141,10 +141,10 @@ export default async function WhatsAppOverviewPage() {
             },
           ].map(({ n, title, desc, code }) => (
             <div key={n} style={{ background: "#0D0D0D", border: "1px solid #1E1E1E", padding: "16px" }}>
-              <p style={{ fontSize: "10px", color: "#8C7355", fontWeight: 700, letterSpacing: "0.15em", margin: "0 0 6px" }}>{n}</p>
+              <p style={{ fontSize: "10px", color: "#0066FF", fontWeight: 700, letterSpacing: "0.15em", margin: "0 0 6px" }}>{n}</p>
               <p style={{ fontSize: "13px", fontWeight: 700, color: "#ccc", margin: "0 0 6px" }}>{title}</p>
               <p style={{ fontSize: "12px", color: "#555", margin: "0 0 10px", lineHeight: 1.5 }}>{desc}</p>
-              <pre style={{ fontSize: "10px", color: "#8C7355", background: "#141414", padding: "8px", margin: 0, lineHeight: 1.6, overflow: "auto" }}>{code}</pre>
+              <pre style={{ fontSize: "10px", color: "#0066FF", background: "#141414", padding: "8px", margin: 0, lineHeight: 1.6, overflow: "auto" }}>{code}</pre>
             </div>
           ))}
         </div>

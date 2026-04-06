@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export const metadata = { title: "Automations — ADESSO Admin" };
 
@@ -55,7 +55,7 @@ export default function AutomationsPage() {
         <Link
           href="/admin/devmode"
           style={{
-            background: "#8C7355", color: "#fff", padding: "9px 18px",
+            background: "#0066FF", color: "#fff", padding: "9px 18px",
             fontSize: "11px", fontWeight: 700, textDecoration: "none",
             letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "2px",
           }}
@@ -67,7 +67,7 @@ export default function AutomationsPage() {
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total Automations", value: AUTOMATIONS.length,                                   color: "#8C7355" },
+          { label: "Total Automations", value: AUTOMATIONS.length,                                   color: "#0066FF" },
           { label: "Active",            value: AUTOMATIONS.filter(a => a.status === "active").length, color: "#3D7A4E" },
           { label: "Total Runs",        value: AUTOMATIONS.reduce((s, a) => s + a.runs, 0),           color: "#4A6C8C" },
         ].map(s => (
@@ -126,7 +126,7 @@ export default function AutomationsPage() {
                   </div>
                 </div>
                 <div style={{ display: "flex", gap: "16px" }}>
-                  <span style={{ color: "#333", fontSize: "10px" }}>Runs: <span style={{ color: "#8C7355" }}>{a.runs}</span></span>
+                  <span style={{ color: "#333", fontSize: "10px" }}>Runs: <span style={{ color: "#0066FF" }}>{a.runs}</span></span>
                   <span style={{ color: "#333", fontSize: "10px" }}>Last run: <span style={{ color: "#555" }}>{a.lastRun}</span></span>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function AutomationsPage() {
             marginTop: "16px", background: "#0D0D0D",
             border: "1px solid #1E1E1E", borderRadius: "4px", padding: "14px 16px",
           }}>
-            <p style={{ color: "#8C7355", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 8px" }}>
+            <p style={{ color: "#0066FF", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 8px" }}>
               Email Provider
             </p>
             <p style={{ color: "#555", fontSize: "11px", margin: "0 0 10px", lineHeight: 1.5 }}>
@@ -172,7 +172,7 @@ export default function AutomationsPage() {
               target="_blank"
               rel="noreferrer"
               style={{
-                color: "#8C7355", fontSize: "11px", textDecoration: "none",
+                color: "#0066FF", fontSize: "11px", textDecoration: "none",
                 display: "flex", alignItems: "center", gap: "4px",
               }}
             >

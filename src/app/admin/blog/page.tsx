@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 
 export const metadata = { title: "Blog — ADESSO Admin" };
@@ -62,7 +62,7 @@ export default async function BlogManagerPage() {
           <Link
             href="/admin/blog/new"
             style={{
-              background: "#8C7355", color: "#fff", padding: "9px 18px",
+              background: "#0066FF", color: "#fff", padding: "9px 18px",
               fontSize: "11px", fontWeight: 700, textDecoration: "none",
               letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "2px",
             }}
@@ -75,7 +75,7 @@ export default async function BlogManagerPage() {
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total Posts",  value: posts.length,   color: "#8C7355" },
+          { label: "Total Posts",  value: posts.length,   color: "#0066FF" },
           { label: "Published",    value: publishedCount, color: "#3D7A4E" },
           { label: "Drafts",       value: draftCount,     color: "#555"    },
         ].map(s => (
@@ -103,7 +103,7 @@ export default async function BlogManagerPage() {
           <Link
             href="/admin/blog/new"
             style={{
-              background: "#8C7355", color: "#fff", padding: "9px 20px",
+              background: "#0066FF", color: "#fff", padding: "9px 20px",
               fontSize: "11px", textDecoration: "none", borderRadius: "2px",
               fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
             }}
@@ -138,7 +138,7 @@ export default async function BlogManagerPage() {
                   <td style={{ padding: "12px 16px" }}>
                     <span style={{
                       fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
-                      textTransform: "uppercase", color: "#8C7355",
+                      textTransform: "uppercase", color: "#0066FF",
                       background: "rgba(140,115,85,0.1)", padding: "2px 7px", borderRadius: "10px",
                     }}>
                       {p.category ?? "general"}
@@ -164,7 +164,7 @@ export default async function BlogManagerPage() {
                       <Link
                         href={`/admin/blog/${p.id}/edit`}
                         style={{
-                          color: "#8C7355", fontSize: "10px",
+                          color: "#0066FF", fontSize: "10px",
                           padding: "4px 10px", background: "rgba(140,115,85,0.1)",
                           borderRadius: "2px", border: "1px solid rgba(140,115,85,0.2)",
                           textDecoration: "none",

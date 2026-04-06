@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -213,7 +213,7 @@ export default function NewBlogPostPage() {
                 disabled={saving === "saving"}
                 style={{
                   width: "100%", padding: "10px",
-                  background: saving === "saving" ? "#555" : "#8C7355",
+                  background: saving === "saving" ? "#555" : "#0066FF",
                   border: "none", color: "#fff",
                   fontSize: "11px", fontWeight: 700,
                   letterSpacing: "0.12em", textTransform: "uppercase",

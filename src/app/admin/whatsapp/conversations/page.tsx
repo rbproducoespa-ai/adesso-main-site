@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -27,7 +27,7 @@ const S = {
     borderBottom: "1px solid #1a1a1a",
     cursor: "pointer" as const,
     background: active ? "rgba(140,115,85,0.12)" : "transparent",
-    borderLeft: `3px solid ${active ? "#8C7355" : "transparent"}`,
+    borderLeft: `3px solid ${active ? "#0066FF" : "transparent"}`,
   }),
   statusDot: (s: string) => ({
     width: "7px", height: "7px", borderRadius: "50%", flexShrink: 0,
@@ -41,7 +41,7 @@ const S = {
     maxWidth: "65%",
     marginLeft: dir === "outbound" ? "auto" : 0,
     marginBottom: "8px",
-    background: dir === "outbound" ? "#8C7355" : "#1E1E1E",
+    background: dir === "outbound" ? "#0066FF" : "#1E1E1E",
     color: dir === "outbound" ? "#fff" : "#ddd",
     padding: "10px 14px",
     fontSize: "13px",
@@ -51,7 +51,7 @@ const S = {
   }),
   inputBar: { padding: "14px 20px", borderTop: "1px solid #1E1E1E", background: "#141414", display: "flex", gap: "10px" },
   input: { flex: 1, background: "#1E1E1E", border: "1px solid #2a2a2a", color: "#ddd", padding: "10px 14px", fontSize: "13px", outline: "none", resize: "none" as const, fontFamily: "inherit" },
-  sendBtn: { background: "#8C7355", color: "#fff", border: "none", padding: "10px 20px", fontSize: "12px", fontWeight: 700, cursor: "pointer" as const, textTransform: "uppercase" as const, letterSpacing: "0.1em" },
+  sendBtn: { background: "#0066FF", color: "#fff", border: "none", padding: "10px 20px", fontSize: "12px", fontWeight: 700, cursor: "pointer" as const, textTransform: "uppercase" as const, letterSpacing: "0.1em" },
   actionBtn: (color: string) => ({ background: "#1E1E1E", color, border: `1px solid #2a2a2a`, padding: "6px 14px", fontSize: "11px", fontWeight: 600, cursor: "pointer" as const }),
 };
 
@@ -152,7 +152,7 @@ export default function ConversationsPage() {
           <div style={{ display: "flex", gap: "4px" }}>
             {(["all", "agent", "bot"] as const).map((f) => (
               <button key={f} onClick={() => setFilter(f)} style={{
-                background: filter === f ? "#8C7355" : "#1E1E1E",
+                background: filter === f ? "#0066FF" : "#1E1E1E",
                 color: filter === f ? "#fff" : "#555",
                 border: "none", padding: "3px 8px", fontSize: "9px", fontWeight: 700,
                 letterSpacing: "0.1em", cursor: "pointer", textTransform: "uppercase",

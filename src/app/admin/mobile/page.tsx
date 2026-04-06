@@ -1,4 +1,4 @@
-export const metadata = { title: "Mobile Editor — ADESSO Admin" };
+﻿export const metadata = { title: "Mobile Editor — ADESSO Admin" };
 
 export default function MobileEditorPage() {
   return (
@@ -95,7 +95,7 @@ export default function MobileEditorPage() {
             background: "#141414", border: "1px solid #1E1E1E",
             borderRadius: "4px", padding: "14px 16px",
           }}>
-            <p style={{ color: "#8C7355", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 8px" }}>
+            <p style={{ color: "#0066FF", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 8px" }}>
               Open in Editor
             </p>
             <p style={{ color: "#444", fontSize: "11px", margin: "0 0 12px", lineHeight: 1.5 }}>
@@ -104,7 +104,7 @@ export default function MobileEditorPage() {
             <a
               href="/admin/editor"
               style={{
-                background: "#8C7355", color: "#fff", padding: "8px 14px",
+                background: "#0066FF", color: "#fff", padding: "8px 14px",
                 fontSize: "10px", textDecoration: "none", borderRadius: "2px",
                 fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
                 display: "inline-block",
@@ -126,7 +126,7 @@ export default function MobileEditorPage() {
               href="https://ngrok.com"
               target="_blank"
               rel="noreferrer"
-              style={{ color: "#8C7355", fontSize: "11px", textDecoration: "none" }}
+              style={{ color: "#0066FF", fontSize: "11px", textDecoration: "none" }}
             >
               Set up ngrok →
             </a>

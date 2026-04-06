@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 
 export const metadata = { title: "Media Manager — ADESSO Admin" };
@@ -45,13 +45,13 @@ export default async function MediaManagerPage() {
           <p style={{ color: "#555", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 4px" }}>Admin › Media</p>
           <h2 style={{ color: "#fff", fontSize: "20px", fontWeight: 700, margin: 0 }}>Media Manager</h2>
           <p style={{ color: "#444", fontSize: "12px", margin: "4px 0 0" }}>
-            Supabase Storage bucket: <code style={{ color: "#8C7355" }}>site-assets</code>
+            Supabase Storage bucket: <code style={{ color: "#0066FF" }}>site-assets</code>
           </p>
         </div>
         <Link
           href="/admin/editor"
           style={{
-            background: "#8C7355", color: "#fff", padding: "9px 18px",
+            background: "#0066FF", color: "#fff", padding: "9px 18px",
             fontSize: "11px", fontWeight: 700, textDecoration: "none",
             letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "2px",
           }}
@@ -72,7 +72,7 @@ export default async function MediaManagerPage() {
             Storage bucket not configured
           </p>
           <p style={{ color: "#444", fontSize: "12px", margin: "0 0 20px", maxWidth: "400px", marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>
-            Run the SQL migration in Supabase to create the <code style={{ color: "#8C7355" }}>site-assets</code> bucket,
+            Run the SQL migration in Supabase to create the <code style={{ color: "#0066FF" }}>site-assets</code> bucket,
             or upload images directly via the Site Editor.
           </p>
           <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
@@ -91,7 +91,7 @@ export default async function MediaManagerPage() {
             <Link
               href="/admin/editor"
               style={{
-                background: "#8C7355", color: "#fff", padding: "8px 16px",
+                background: "#0066FF", color: "#fff", padding: "8px 16px",
                 fontSize: "11px", textDecoration: "none", borderRadius: "2px",
               }}
             >
@@ -114,7 +114,7 @@ export default async function MediaManagerPage() {
           <Link
             href="/admin/editor"
             style={{
-              background: "#8C7355", color: "#fff", padding: "9px 20px",
+              background: "#0066FF", color: "#fff", padding: "9px 20px",
               fontSize: "11px", textDecoration: "none", borderRadius: "2px",
               fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
             }}
@@ -136,7 +136,7 @@ export default async function MediaManagerPage() {
                 borderRadius: "4px", padding: "16px 20px",
               }}>
                 <p style={{ color: "#333", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 6px" }}>{s.label}</p>
-                <p style={{ color: "#8C7355", fontSize: "24px", fontWeight: 700, margin: 0 }}>{s.value}</p>
+                <p style={{ color: "#0066FF", fontSize: "24px", fontWeight: 700, margin: 0 }}>{s.value}</p>
               </div>
             ))}
           </div>

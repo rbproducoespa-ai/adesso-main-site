@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -253,7 +253,7 @@ function EditorInner() {
           display: "flex", alignItems: "center", gap: "10px",
         }}>
           <div style={{
-            width: "26px", height: "26px", background: "#8C7355",
+            width: "26px", height: "26px", background: "#0066FF",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: "11px", fontWeight: 800, flexShrink: 0, color: "#fff",
           }}>A</div>
@@ -278,7 +278,7 @@ function EditorInner() {
               >
                 <span style={{
                   fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em",
-                  color: currentApp === app ? "#8C7355" : "#444",
+                  color: currentApp === app ? "#0066FF" : "#444",
                   textTransform: "uppercase",
                 }}>
                   {APP_LABELS[app] ?? app}
@@ -297,7 +297,7 @@ function EditorInner() {
                         onClick={() => handlePageChange(pageKey)}
                         style={{
                           width: "100%", textAlign: "left", padding: "6px 14px 6px 20px",
-                          background: selectedPage === pageKey ? "#8C7355" : "none",
+                          background: selectedPage === pageKey ? "#0066FF" : "none",
                           border: "none",
                           color: selectedPage === pageKey ? "#fff" : "#777",
                           fontSize: "12px", cursor: "pointer",
@@ -317,7 +317,7 @@ function EditorInner() {
                                 width: "100%", textAlign: "left",
                                 padding: "5px 14px 5px 30px",
                                 background: "none", border: "none",
-                                borderLeft: selectedSection === secKey ? "2px solid #8C7355" : "2px solid transparent",
+                                borderLeft: selectedSection === secKey ? "2px solid #0066FF" : "2px solid transparent",
                                 color: selectedSection === secKey ? "#fff" : "#555",
                                 fontSize: "11px", cursor: "pointer", transition: "all 0.15s",
                               }}
@@ -350,14 +350,14 @@ function EditorInner() {
       }}>
         {/* Panel header */}
         <div style={{ padding: "14px 18px", borderBottom: "1px solid #252525" }}>
-          <div style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "#8C7355", textTransform: "uppercase", marginBottom: "2px" }}>
+          <div style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "#0066FF", textTransform: "uppercase", marginBottom: "2px" }}>
             {APP_LABELS[currentApp] ?? currentApp} › {pageSchema?.label}
           </div>
           <div style={{ fontSize: "15px", fontWeight: 600, color: "#fff" }}>
             {sectionSchema?.label ?? "Select a section"}
           </div>
           {modifiedCount > 0 && (
-            <div style={{ fontSize: "10px", color: "#8C7355", marginTop: "4px" }}>
+            <div style={{ fontSize: "10px", color: "#0066FF", marginTop: "4px" }}>
               {modifiedCount} field{modifiedCount > 1 ? "s" : ""} modified — not saved yet
             </div>
           )}
@@ -372,7 +372,7 @@ function EditorInner() {
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
                 <label style={{ fontSize: "10px", fontWeight: 700, color: "#666", letterSpacing: "0.1em", textTransform: "uppercase" }}>
                   {field.label}
-                  {isModified(key) && <span style={{ marginLeft: "6px", color: "#8C7355", fontSize: "9px" }}>● edited</span>}
+                  {isModified(key) && <span style={{ marginLeft: "6px", color: "#0066FF", fontSize: "9px" }}>● edited</span>}
                 </label>
                 {isModified(key) && (
                   <button onClick={() => handleReset(key)} style={{ fontSize: "10px", color: "#555", background: "none", border: "none", cursor: "pointer", textDecoration: "underline" }}>
@@ -409,7 +409,7 @@ function EditorInner() {
             disabled={saveStatus === "saving"}
             style={{
               width: "100%", padding: "12px",
-              background: saveStatus === "saved" ? "#2D5A27" : saveStatus === "error" ? "#6B2727" : "#8C7355",
+              background: saveStatus === "saved" ? "#2D5A27" : saveStatus === "error" ? "#6B2727" : "#0066FF",
               border: "none", color: "#fff", fontSize: "12px", fontWeight: 700,
               letterSpacing: "0.15em", textTransform: "uppercase",
               cursor: saveStatus === "saving" ? "default" : "pointer",
@@ -438,7 +438,7 @@ function EditorInner() {
             <span style={{ fontSize: "10px", color: "#555", flexShrink: 0 }}>
               {APP_LABELS[currentApp] ?? currentApp} ›
             </span>
-            <span style={{ fontSize: "11px", color: "#8C7355", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <span style={{ fontSize: "11px", color: "#0066FF", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {pageSchema?.label}
             </span>
             <span style={{ fontSize: "11px", color: "#333", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
@@ -451,7 +451,7 @@ function EditorInner() {
             {(["desktop", "tablet", "mobile"] as ViewMode[]).map(mode => (
               <button key={mode} onClick={() => setViewMode(mode)} style={{
                 padding: "4px 10px", fontSize: "10px", fontWeight: 600,
-                background: viewMode === mode ? "#8C7355" : "#252525",
+                background: viewMode === mode ? "#0066FF" : "#252525",
                 border: "none", color: "#fff", cursor: "pointer", borderRadius: "3px",
                 textTransform: "capitalize",
               }}>

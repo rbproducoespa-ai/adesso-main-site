@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 interface SitePage {
   path: string;
@@ -33,7 +33,7 @@ const SECTIONS = [...new Set(SITE_PAGES.map(p => p.section))];
 function Badge({ status }: { status: string }) {
   const colors: Record<string, [string, string]> = {
     published: ["#3D7A4E", "rgba(61,122,78,0.12)"],
-    draft:     ["#8C7355", "rgba(140,115,85,0.12)"],
+    draft:     ["#0066FF", "rgba(140,115,85,0.12)"],
   };
   const [fg, bg] = colors[status] ?? ["#555", "#1A1A1A"];
   return (
@@ -67,7 +67,7 @@ export default function PagesManagerPage() {
         <Link
           href="/admin/editor"
           style={{
-            background: "#8C7355", color: "#fff",
+            background: "#0066FF", color: "#fff",
             padding: "9px 18px", fontSize: "11px",
             fontWeight: 700, textDecoration: "none",
             letterSpacing: "0.12em", textTransform: "uppercase",
@@ -139,7 +139,7 @@ export default function PagesManagerPage() {
                             <Link
                               href={`/admin/editor?page=${p.editorSection ?? p.slug}`}
                               style={{
-                                color: "#8C7355", fontSize: "10px", textDecoration: "none",
+                                color: "#0066FF", fontSize: "10px", textDecoration: "none",
                                 padding: "4px 10px", background: "rgba(140,115,85,0.1)",
                                 borderRadius: "2px", border: "1px solid rgba(140,115,85,0.2)",
                               }}
@@ -170,7 +170,7 @@ export default function PagesManagerPage() {
             Dynamic Page Management
           </p>
           <p style={{ color: "#444", fontSize: "11px", margin: 0, lineHeight: 1.6 }}>
-            Pages are managed through the Next.js App Router. To add new pages, create files in the <code style={{ color: "#8C7355" }}>src/app/</code> directory.
+            Pages are managed through the Next.js App Router. To add new pages, create files in the <code style={{ color: "#0066FF" }}>src/app/</code> directory.
             Use the Site Editor to modify text and images on existing pages.
           </p>
         </div>

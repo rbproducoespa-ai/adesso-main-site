@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 interface Division {
   n: string;
@@ -74,7 +74,7 @@ export function QuickActions({ actions }: { actions: QuickAction[] }) {
             transition: "border-color 0.15s, background 0.15s",
           }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLElement).style.borderColor = "#8C7355";
+            (e.currentTarget as HTMLElement).style.borderColor = "#0066FF";
             (e.currentTarget as HTMLElement).style.background = "#191919";
           }}
           onMouseLeave={e => {

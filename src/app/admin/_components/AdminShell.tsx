@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -167,7 +167,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
                     {!sidebarCollapsed && item.badge && (
                       <span style={{
                         marginLeft: "auto", fontSize: "9px", fontWeight: 700,
-                        background: "#8C7355", color: "#fff",
+                        background: "#0066FF", color: "#fff",
                         padding: "1px 5px", borderRadius: "10px",
                       }}>{item.badge}</span>
                     )}

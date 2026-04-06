@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 
 export const metadata = { title: "Forms & Leads — ADESSO Admin" };
@@ -83,7 +83,7 @@ export default async function FormsPage() {
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total Submissions", value: submissions.length, color: "#8C7355" },
+          { label: "Total Submissions", value: submissions.length, color: "#0066FF" },
           { label: "Today",             value: todayCount,         color: "#3D7A4E" },
           { label: "This Week",         value: weekCount,          color: "#4A6C8C" },
           { label: "Active Forms",      value: SITE_FORMS.filter(f => f.active).length, color: "#6B4C8C" },
@@ -114,7 +114,7 @@ export default async function FormsPage() {
               <p style={{ color: "#777", fontSize: "13px", fontWeight: 600, margin: "0 0 8px" }}>No submissions yet</p>
               <p style={{ color: "#444", fontSize: "11px", margin: 0, lineHeight: 1.6 }}>
                 Form submissions will appear here when visitors contact you.<br />
-                Connect your contact form to the <code style={{ color: "#8C7355" }}>form_submissions</code> table.
+                Connect your contact form to the <code style={{ color: "#0066FF" }}>form_submissions</code> table.
               </p>
             </div>
           ) : (

@@ -1,11 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { createAdminSupabase } from "@/lib/supabase-admin";
 
 export const metadata = { title: "Orders — ADESSO Admin" };
 
 function statusColor(status: string) {
   if (status === "delivered") return ["#3D7A4E", "rgba(61,122,78,0.12)"];
-  if (status === "paid")      return ["#8C7355", "rgba(140,115,85,0.12)"];
+  if (status === "paid")      return ["#0066FF", "rgba(140,115,85,0.12)"];
   if (status === "cancelled") return ["#8C3535", "rgba(140,53,53,0.12)"];
   return ["#555", "#1A1A1A"];
 }
@@ -42,7 +42,7 @@ export default async function AdminOrdersPage() {
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total",     value: total ?? 0,     color: "#8C7355" },
+          { label: "Total",     value: total ?? 0,     color: "#0066FF" },
           { label: "Paid",      value: paid ?? 0,      color: "#3D7A4E" },
           { label: "Delivered", value: delivered ?? 0, color: "#4A6C8C" },
           { label: "Pending",   value: pending ?? 0,   color: "#555"    },
@@ -98,7 +98,7 @@ export default async function AdminOrdersPage() {
                     <td style={{ padding: "12px 16px", color: "#888", fontSize: "12px", maxWidth: "200px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                       {o.product_name}
                     </td>
-                    <td style={{ padding: "12px 16px", color: "#8C7355", fontSize: "12px", fontWeight: 700 }}>
+                    <td style={{ padding: "12px 16px", color: "#0066FF", fontSize: "12px", fontWeight: 700 }}>
                       £{(parseInt(o.amount_pence) / 100).toFixed(2)}
                     </td>
                     <td style={{ padding: "12px 16px", color: "#444", fontSize: "10px" }}>
@@ -117,7 +117,7 @@ export default async function AdminOrdersPage() {
                       <Link
                         href={`/admin/orders/${o.id}`}
                         style={{
-                          color: "#8C7355", fontSize: "10px", textDecoration: "none",
+                          color: "#0066FF", fontSize: "10px", textDecoration: "none",
                           padding: "4px 10px", background: "rgba(140,115,85,0.1)",
                           borderRadius: "2px", border: "1px solid rgba(140,115,85,0.2)",
                         }}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { createAdminSupabase } from "@/lib/supabase-admin";
 
 const S = {
@@ -6,13 +6,13 @@ const S = {
   h1: { fontSize: "22px", fontWeight: 700, color: "#fff", margin: "0 0 4px" },
   sub: { fontSize: "13px", color: "#555", margin: "0 0 28px" },
   header: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" },
-  btn: { display: "inline-block", background: "#8C7355", color: "#fff", padding: "9px 20px", fontSize: "11px", fontWeight: 700, textDecoration: "none", letterSpacing: "0.12em", textTransform: "uppercase" as const },
+  btn: { display: "inline-block", background: "#0066FF", color: "#fff", padding: "9px 20px", fontSize: "11px", fontWeight: 700, textDecoration: "none", letterSpacing: "0.12em", textTransform: "uppercase" as const },
   card: { background: "#141414", border: "1px solid #1E1E1E", padding: "20px 24px", marginBottom: "12px", display: "flex", alignItems: "center", gap: "16px" },
   dot: (active: boolean) => ({ width: "8px", height: "8px", borderRadius: "50%", background: active ? "#22C55E" : "#333", flexShrink: 0 }),
   name: { fontSize: "15px", fontWeight: 600, color: "#ddd", margin: "0 0 4px" },
   meta: { fontSize: "11px", color: "#555", margin: 0 },
   actions: { marginLeft: "auto", display: "flex", gap: "8px", flexShrink: 0 },
-  editBtn: { fontSize: "11px", color: "#8C7355", textDecoration: "none", fontWeight: 600 },
+  editBtn: { fontSize: "11px", color: "#0066FF", textDecoration: "none", fontWeight: 600 },
 };
 
 export default async function FlowsPage() {
@@ -60,7 +60,7 @@ export default async function FlowsPage() {
       })}
 
       <div style={{ marginTop: "24px", padding: "16px", background: "#111", border: "1px solid #1E1E1E", fontSize: "12px", color: "#555", lineHeight: 1.6 }}>
-        <strong style={{ color: "#8C7355" }}>Dica:</strong> Apenas um fluxo ativo é usado por vez. O sistema seleciona o fluxo mais antigo com status <em>ativo</em>. Para criar um fluxo de teste, desative o principal primeiro.
+        <strong style={{ color: "#0066FF" }}>Dica:</strong> Apenas um fluxo ativo é usado por vez. O sistema seleciona o fluxo mais antigo com status <em>ativo</em>. Para criar um fluxo de teste, desative o principal primeiro.
       </div>
     </div>
   );

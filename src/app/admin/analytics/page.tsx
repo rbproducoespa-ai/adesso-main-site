@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 
 export const metadata = { title: "Analytics — ADESSO Admin" };
@@ -63,7 +63,7 @@ export default async function AnalyticsPage() {
           target="_blank"
           rel="noreferrer"
           style={{
-            background: "#141414", color: "#8C7355", padding: "9px 16px",
+            background: "#141414", color: "#0066FF", padding: "9px 16px",
             fontSize: "11px", textDecoration: "none", borderRadius: "2px",
             border: "1px solid #252525",
           }}
@@ -75,7 +75,7 @@ export default async function AnalyticsPage() {
       {/* Stats Row */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total Orders",    value: String(totalOrders ?? 0),      color: "#8C7355" },
+          { label: "Total Orders",    value: String(totalOrders ?? 0),      color: "#0066FF" },
           { label: "Paid Orders",     value: String(paidOrders ?? 0),       color: "#3D7A4E" },
           { label: "Total Revenue",   value: `£${(totalRevenue/100).toFixed(2)}`, color: "#4A6C8C" },
           { label: "Avg Order Value", value: `£${(avgOrderValue/100).toFixed(2)}`, color: "#6B4C8C" },
@@ -100,11 +100,11 @@ export default async function AnalyticsPage() {
               const heightPct = maxRevenue > 0 ? (m.value / maxRevenue) * 100 : 0;
               return (
                 <div key={m.month} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", height: "100%", justifyContent: "flex-end" }}>
-                  <span style={{ color: "#8C7355", fontSize: "9px", fontWeight: 700 }}>
+                  <span style={{ color: "#0066FF", fontSize: "9px", fontWeight: 700 }}>
                     {m.value > 0 ? `£${m.value.toFixed(0)}` : ""}
                   </span>
                   <div style={{
-                    width: "100%", background: m.value > 0 ? "#8C7355" : "#1E1E1E",
+                    width: "100%", background: m.value > 0 ? "#0066FF" : "#1E1E1E",
                     height: `${Math.max(heightPct, 4)}%`,
                     borderRadius: "2px 2px 0 0", transition: "height 0.3s",
                     opacity: m.value > 0 ? 1 : 0.3,
@@ -141,7 +141,7 @@ export default async function AnalyticsPage() {
                 <div style={{ height: "3px", background: "#1A1A1A", borderRadius: "2px", overflow: "hidden" }}>
                   <div style={{
                     height: "100%", width: `${(p.views / maxViews) * 100}%`,
-                    background: "#8C7355", borderRadius: "2px", opacity: 0.4,
+                    background: "#0066FF", borderRadius: "2px", opacity: 0.4,
                   }} />
                 </div>
               </div>
@@ -162,13 +162,13 @@ export default async function AnalyticsPage() {
             Connect Google Analytics 4 for full visitor data
           </p>
           <p style={{ color: "#444", fontSize: "11px", margin: 0 }}>
-            Add your GA4 Measurement ID to <code style={{ color: "#8C7355" }}>NEXT_PUBLIC_GA_ID</code> in environment variables to track page views, sessions and conversions.
+            Add your GA4 Measurement ID to <code style={{ color: "#0066FF" }}>NEXT_PUBLIC_GA_ID</code> in environment variables to track page views, sessions and conversions.
           </p>
         </div>
         <Link
           href="/admin/settings"
           style={{
-            background: "#8C7355", color: "#fff", padding: "8px 16px",
+            background: "#0066FF", color: "#fff", padding: "8px 16px",
             fontSize: "10px", textDecoration: "none", borderRadius: "2px",
             fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
             flexShrink: 0,

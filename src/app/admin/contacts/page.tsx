@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 import { ContactsClient } from "./_components/ContactsClient";
 
@@ -49,7 +49,7 @@ export default async function ContactsPage() {
   const qualifiedCount = contacts.filter(c => c.status === "qualified").length;
 
   const STATS = [
-    { label: "Total Leads",  value: contacts.length, color: "#8C7355" },
+    { label: "Total Leads",  value: contacts.length, color: "#0066FF" },
     { label: "New",          value: newCount,         color: "#8C3535" },
     { label: "Contacted",    value: contactedCount,   color: "#4A6C8C" },
     { label: "Qualified",    value: qualifiedCount,   color: "#3D7A4E" },
@@ -63,7 +63,7 @@ export default async function ContactsPage() {
         <p style={{ color: "#555", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 4px" }}>Admin › CRM</p>
         <h2 style={{ color: "#fff", fontSize: "20px", fontWeight: 700, margin: 0 }}>CRM / Contacts</h2>
         <p style={{ color: "#444", fontSize: "12px", margin: "4px 0 0" }}>
-          {contacts.length} total leads · Table: <code style={{ color: "#8C7355" }}>{tableUsed}</code>
+          {contacts.length} total leads · Table: <code style={{ color: "#0066FF" }}>{tableUsed}</code>
         </p>
       </div>
 
@@ -90,7 +90,7 @@ export default async function ContactsPage() {
           <p style={{ color: "#777", fontSize: "14px", fontWeight: 600, margin: "0 0 8px" }}>No contacts yet</p>
           <p style={{ color: "#444", fontSize: "12px", margin: 0, lineHeight: 1.6 }}>
             Contacts from your website forms will appear here.<br />
-            Make sure your forms are connected to the <code style={{ color: "#8C7355" }}>contacts</code> Supabase table.
+            Make sure your forms are connected to the <code style={{ color: "#0066FF" }}>contacts</code> Supabase table.
           </p>
         </div>
       ) : (

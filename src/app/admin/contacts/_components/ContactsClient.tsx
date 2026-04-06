@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useCallback } from "react";
 
@@ -18,7 +18,7 @@ interface Contact {
 const STATUS_OPTIONS = ["new", "contacted", "qualified", "closed"];
 
 const STATUS_COLORS: Record<string, [string, string]> = {
-  new:       ["#8C7355", "rgba(140,115,85,0.12)"],
+  new:       ["#0066FF", "rgba(140,115,85,0.12)"],
   contacted: ["#4A6C8C", "rgba(74,108,140,0.12)"],
   qualified: ["#3D7A4E", "rgba(61,122,78,0.12)"],
   closed:    ["#555",    "#1A1A1A"],
@@ -149,7 +149,7 @@ export function ContactsClient({ contacts: initialContacts, tableUsed }: { conta
                       style={{
                         background: isSelected ? "rgba(140,115,85,0.1)" : "none",
                         border: `1px solid ${isSelected ? "rgba(140,115,85,0.3)" : "#252525"}`,
-                        color: isSelected ? "#8C7355" : "#555",
+                        color: isSelected ? "#0066FF" : "#555",
                         fontSize: "10px", padding: "3px 10px", borderRadius: "2px", cursor: "pointer",
                       }}
                     >
@@ -201,7 +201,7 @@ export function ContactsClient({ contacts: initialContacts, tableUsed }: { conta
 
           {selected.message && (
             <div style={{ background: "#0D0D0D", border: "1px solid #1A1A1A", borderRadius: "3px", padding: "12px" }}>
-              <p style={{ color: "#8C7355", fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 8px" }}>Message</p>
+              <p style={{ color: "#0066FF", fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 8px" }}>Message</p>
               <p style={{ color: "#888", fontSize: "12px", margin: 0, lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{selected.message}</p>
             </div>
           )}
@@ -240,7 +240,7 @@ export function ContactsClient({ contacts: initialContacts, tableUsed }: { conta
               href={`mailto:${selected.email}`}
               style={{
                 display: "block", textAlign: "center",
-                background: "#8C7355", color: "#fff",
+                background: "#0066FF", color: "#fff",
                 padding: "9px", fontSize: "11px",
                 fontWeight: 700, textDecoration: "none",
                 letterSpacing: "0.12em", textTransform: "uppercase",

@@ -1,11 +1,11 @@
-import { createServerSupabase } from "@/lib/supabase-server";
+﻿import { createServerSupabase } from "@/lib/supabase-server";
 import { createAdminSupabase } from "@/lib/supabase-admin";
 
 export const metadata = { title: "User Roles — ADESSO Admin" };
 
 const ROLES = [
   {
-    name: "Admin",     color: "#8C7355",
+    name: "Admin",     color: "#0066FF",
     desc: "Full access to all features including settings, user management and dev tools",
     permissions: ["Dashboard", "Site Editor", "All Pages", "Media", "SEO", "Blog", "Ecommerce", "CRM", "Forms", "Automations", "Analytics", "Settings", "Roles", "Database", "Dev Mode"],
   },
@@ -52,7 +52,7 @@ export default async function RolesPage() {
           target="_blank"
           rel="noreferrer"
           style={{
-            background: "#8C7355", color: "#fff", padding: "9px 18px",
+            background: "#0066FF", color: "#fff", padding: "9px 18px",
             fontSize: "11px", fontWeight: 700, textDecoration: "none",
             letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "2px",
           }}
@@ -69,7 +69,7 @@ export default async function RolesPage() {
         marginBottom: "28px",
       }}>
         <div style={{
-          width: "36px", height: "36px", background: "#8C7355",
+          width: "36px", height: "36px", background: "#0066FF",
           borderRadius: "50%", display: "flex", alignItems: "center",
           justifyContent: "center", fontSize: "14px", fontWeight: 700, color: "#fff",
           flexShrink: 0,
@@ -84,7 +84,7 @@ export default async function RolesPage() {
         </div>
         <span style={{
           fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em",
-          textTransform: "uppercase", color: "#8C7355",
+          textTransform: "uppercase", color: "#0066FF",
           background: "rgba(140,115,85,0.12)", padding: "4px 10px", borderRadius: "10px",
         }}>
           Admin
@@ -144,7 +144,7 @@ export default async function RolesPage() {
           <p style={{ color: "#777", fontSize: "12px", fontWeight: 600, margin: "0 0 4px" }}>Row-Level Security (RLS) in Supabase</p>
           <p style={{ color: "#444", fontSize: "11px", margin: 0, lineHeight: 1.6 }}>
             Permissions are enforced at the database level via Supabase RLS policies.
-            User roles are stored in <code style={{ color: "#8C7355" }}>auth.users.user_metadata.role</code>.
+            User roles are stored in <code style={{ color: "#0066FF" }}>auth.users.user_metadata.role</code>.
             Update the role by editing user metadata in the Supabase Auth dashboard.
           </p>
         </div>
@@ -153,7 +153,7 @@ export default async function RolesPage() {
           target="_blank"
           rel="noreferrer"
           style={{
-            color: "#8C7355", fontSize: "11px", textDecoration: "none",
+            color: "#0066FF", fontSize: "11px", textDecoration: "none",
             whiteSpace: "nowrap", alignSelf: "center",
           }}
         >

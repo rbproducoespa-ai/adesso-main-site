@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -36,7 +36,7 @@ const DIVISIONS: Division[] = [
     url: process.env.NEXT_PUBLIC_EXHIBITION_URL ?? "https://exhibition.adesso.digital",
     editorUrl: "/admin/editor",
     description: "Stand design, 3D visualisation & event production.",
-    color: "#8C7355", status: "live",
+    color: "#0066FF", status: "live",
   },
   {
     n: "02", tag: "Automation", name: "ADESSO Automation",
@@ -88,7 +88,7 @@ export function AdminPanel({ stats, orders, userEmail }: {
         {/* Logo */}
         <div style={{ padding: "20px 20px 0", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, paddingBottom: 16 }}>
-            <div style={{ width: 32, height: 32, background: "#8C7355", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 32, height: 32, background: "#0066FF", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ color: "white", fontSize: 13, fontWeight: 700, letterSpacing: 1 }}>A</span>
             </div>
             <div>
@@ -108,7 +108,7 @@ export function AdminPanel({ stats, orders, userEmail }: {
                 width: "100%", display: "flex", alignItems: "center", gap: 10,
                 padding: "10px 20px", border: "none", cursor: "pointer",
                 background: section === item.id ? "rgba(140,115,85,0.18)" : "transparent",
-                borderLeft: section === item.id ? "2px solid #8C7355" : "2px solid transparent",
+                borderLeft: section === item.id ? "2px solid #0066FF" : "2px solid transparent",
                 color: section === item.id ? "#E8D5BA" : "rgba(255,255,255,0.5)",
                 fontSize: 13, textAlign: "left", transition: "all 0.15s",
               }}
@@ -125,7 +125,7 @@ export function AdminPanel({ stats, orders, userEmail }: {
             {userEmail}
           </p>
           <a href="/" target="_blank"
-            style={{ display: "flex", alignItems: "center", gap: 6, color: "#8C7355", fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+            style={{ display: "flex", alignItems: "center", gap: 6, color: "#0066FF", fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
             <span>↗</span> View Site
           </a>
         </div>
@@ -146,7 +146,7 @@ export function AdminPanel({ stats, orders, userEmail }: {
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             <a href="/admin/editor"
               style={{
-                background: "#8C7355", color: "white", padding: "8px 16px",
+                background: "#0066FF", color: "white", padding: "8px 16px",
                 fontSize: 12, fontWeight: 600, textDecoration: "none",
                 letterSpacing: "0.1em", textTransform: "uppercase",
               }}>
@@ -182,7 +182,7 @@ function DashboardSection({ stats, orders, setSection }: {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
         {[
           { label: "Total Orders", value: stats.totalOrders, color: "#111111", icon: "◻" },
-          { label: "Awaiting Delivery", value: stats.paidOrders, color: "#8C7355", icon: "◷" },
+          { label: "Awaiting Delivery", value: stats.paidOrders, color: "#0066FF", icon: "◷" },
           { label: "Delivered", value: stats.deliveredOrders, color: "#4A8C6A", icon: "✓" },
           { label: "Divisions Live", value: 4, color: "#4A6C8C", icon: "◈" },
         ].map((s) => (
@@ -205,19 +205,19 @@ function DashboardSection({ stats, orders, setSection }: {
         <div style={{ background: "white", border: "1px solid #E2DFDA", borderRadius: 2 }}>
           <div style={{ padding: "16px 20px", borderBottom: "1px solid #E2DFDA", display: "flex", justifyContent: "space-between" }}>
             <h2 style={{ fontSize: 14, fontWeight: 700, margin: 0 }}>Division Status</h2>
-            <button onClick={() => setSection("divisions")} style={{ fontSize: 12, color: "#8C7355", background: "none", border: "none", cursor: "pointer", fontWeight: 600 }}>
+            <button onClick={() => setSection("divisions")} style={{ fontSize: 12, color: "#0066FF", background: "none", border: "none", cursor: "pointer", fontWeight: 600 }}>
               Manage →
             </button>
           </div>
           {DIVISIONS.map((d) => (
             <div key={d.n} style={{ padding: "12px 20px", borderBottom: "1px solid #F5F4F1", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: d.status === "live" ? "#4A8C6A" : "#8C7355" }} />
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: d.status === "live" ? "#4A8C6A" : "#0066FF" }} />
                 <span style={{ fontSize: 13, fontWeight: 600, color: "#111111" }}>{d.name}</span>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <a href={d.url} target="_blank" rel="noopener noreferrer"
-                  style={{ fontSize: 11, color: "#8C7355", textDecoration: "none", padding: "3px 8px", border: "1px solid #8C7355" }}>
+                  style={{ fontSize: 11, color: "#0066FF", textDecoration: "none", padding: "3px 8px", border: "1px solid #0066FF" }}>
                   Open ↗
                 </a>
               </div>
@@ -278,7 +278,7 @@ function DashboardSection({ stats, orders, setSection }: {
       <div style={{ background: "white", border: "1px solid #E2DFDA", borderRadius: 2 }}>
         <div style={{ padding: "16px 20px", borderBottom: "1px solid #E2DFDA", display: "flex", justifyContent: "space-between" }}>
           <h2 style={{ fontSize: 14, fontWeight: 700, margin: 0 }}>Recent Orders</h2>
-          <button onClick={() => setSection("orders")} style={{ fontSize: 12, color: "#8C7355", background: "none", border: "none", cursor: "pointer", fontWeight: 600 }}>
+          <button onClick={() => setSection("orders")} style={{ fontSize: 12, color: "#0066FF", background: "none", border: "none", cursor: "pointer", fontWeight: 600 }}>
             View all →
           </button>
         </div>
@@ -293,7 +293,7 @@ function DashboardSection({ stats, orders, setSection }: {
               <span style={{
                 fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
                 padding: "3px 8px",
-                background: o.status === "delivered" ? "#111111" : o.status === "paid" ? "#8C7355" : "#E2DFDA",
+                background: o.status === "delivered" ? "#111111" : o.status === "paid" ? "#0066FF" : "#E2DFDA",
                 color: o.status === "pending" ? "#5C5C5C" : "white",
               }}>{o.status}</span>
             </div>
@@ -357,11 +357,11 @@ function EditorSection() {
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               <a href={`/admin/editor`}
-                style={{ fontSize: 11, color: "white", background: "#8C7355", padding: "4px 10px", textDecoration: "none", fontWeight: 600 }}>
+                style={{ fontSize: 11, color: "white", background: "#0066FF", padding: "4px 10px", textDecoration: "none", fontWeight: 600 }}>
                 Edit
               </a>
               <a href={p.path} target="_blank"
-                style={{ fontSize: 11, color: "#8C7355", padding: "4px 10px", border: "1px solid #8C7355", textDecoration: "none", fontWeight: 600 }}>
+                style={{ fontSize: 11, color: "#0066FF", padding: "4px 10px", border: "1px solid #0066FF", textDecoration: "none", fontWeight: 600 }}>
                 View ↗
               </a>
             </div>
@@ -409,7 +409,7 @@ function DivisionsSection() {
                 </a>
                 <a href="/admin/editor"
                   style={{
-                    flex: 1, textAlign: "center", border: "1px solid #8C7355", color: "#8C7355",
+                    flex: 1, textAlign: "center", border: "1px solid #0066FF", color: "#0066FF",
                     padding: "10px 0", fontSize: 12, fontWeight: 700,
                     letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none",
                   }}>
@@ -449,7 +449,7 @@ function AnalyticsSection({ stats }: { stats: Stats }) {
           <div key={s.label} style={{ background: "white", border: "1px solid #E2DFDA", padding: 20, borderRadius: 2 }}>
             <p style={{ fontSize: 26, fontWeight: 800, color: "#111111", margin: "0 0 4px" }}>{s.value}</p>
             <p style={{ fontSize: 11, color: "#8B8B8B", textTransform: "uppercase", letterSpacing: "0.1em", margin: "0 0 4px" }}>{s.label}</p>
-            {s.note && <p style={{ fontSize: 11, color: "#8C7355", margin: 0 }}>{s.note}</p>}
+            {s.note && <p style={{ fontSize: 11, color: "#0066FF", margin: 0 }}>{s.note}</p>}
           </div>
         ))}
       </div>
@@ -474,7 +474,7 @@ function AnalyticsSection({ stats }: { stats: Stats }) {
                 <p style={{ fontSize: 12, color: "#8B8B8B", margin: 0 }}>{tool.desc}</p>
               </div>
               <a href={tool.href} target="_blank" rel="noopener noreferrer"
-                style={{ fontSize: 11, color: "#8C7355", padding: "6px 12px", border: "1px solid #8C7355", textDecoration: "none", fontWeight: 600, whiteSpace: "nowrap" }}>
+                style={{ fontSize: 11, color: "#0066FF", padding: "6px 12px", border: "1px solid #0066FF", textDecoration: "none", fontWeight: 600, whiteSpace: "nowrap" }}>
                 Set Up ↗
               </a>
             </div>
@@ -505,8 +505,8 @@ function MarketingSection() {
             style={{
               padding: "10px 20px", border: "none", background: "none", cursor: "pointer",
               fontSize: 13, fontWeight: activeTab === t.id ? 700 : 500,
-              color: activeTab === t.id ? "#8C7355" : "#8B8B8B",
-              borderBottom: activeTab === t.id ? "2px solid #8C7355" : "2px solid transparent",
+              color: activeTab === t.id ? "#0066FF" : "#8B8B8B",
+              borderBottom: activeTab === t.id ? "2px solid #0066FF" : "2px solid transparent",
               marginBottom: -1,
             }}>
             {t.label}
@@ -538,7 +538,7 @@ function GoogleAdsContent() {
             { step: "04", text: "Add your domain: adesso.digital as the destination" },
           ].map((s) => (
             <div key={s.step} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <span style={{ fontSize: 10, fontWeight: 700, color: "#8C7355", flexShrink: 0, paddingTop: 2 }}>{s.step}</span>
+              <span style={{ fontSize: 10, fontWeight: 700, color: "#0066FF", flexShrink: 0, paddingTop: 2 }}>{s.step}</span>
               <p style={{ fontSize: 13, color: "#5C5C5C", margin: 0, lineHeight: 1.5 }}>{s.text}</p>
             </div>
           ))}
@@ -593,7 +593,7 @@ gtag('event', 'conversion', {
             <div key={b.budget} style={{ padding: "12px 16px", border: "1px solid #E2DFDA", borderRadius: 2 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
                 <span style={{ fontSize: 16, fontWeight: 800, color: "#111111" }}>{b.budget}</span>
-                <span style={{ fontSize: 10, fontWeight: 700, background: "#8C7355", color: "white", padding: "2px 6px" }}>{b.type}</span>
+                <span style={{ fontSize: 10, fontWeight: 700, background: "#0066FF", color: "white", padding: "2px 6px" }}>{b.type}</span>
               </div>
               <p style={{ fontSize: 12, color: "#5C5C5C", margin: 0 }}>{b.desc}</p>
             </div>
@@ -619,7 +619,7 @@ function MetaAdsContent() {
           { step: "04", text: "Use lookalike audiences to find similar prospects" },
         ].map((s) => (
           <div key={s.step} style={{ display: "flex", gap: 12, marginBottom: 8, alignItems: "flex-start" }}>
-            <span style={{ fontSize: 10, fontWeight: 700, color: "#8C7355", flexShrink: 0, paddingTop: 2 }}>{s.step}</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: "#0066FF", flexShrink: 0, paddingTop: 2 }}>{s.step}</span>
             <p style={{ fontSize: 13, color: "#5C5C5C", margin: 0, lineHeight: 1.5 }}>{s.text}</p>
           </div>
         ))}
@@ -661,10 +661,10 @@ function LinkedInAdsContent() {
           { title: "Budget Guidance",    items: ["Min £15/day recommended", "£500–1,000/mo starter", "CPC typically £5–12 in B2B", "Test with 2-week campaigns"] },
         ].map((col) => (
           <div key={col.title}>
-            <h4 style={{ fontSize: 12, fontWeight: 700, color: "#8C7355", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 10 }}>{col.title}</h4>
+            <h4 style={{ fontSize: 12, fontWeight: 700, color: "#0066FF", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 10 }}>{col.title}</h4>
             {col.items.map((item) => (
               <div key={item} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#8C7355", flexShrink: 0 }} />
+                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#0066FF", flexShrink: 0 }} />
                 <span style={{ fontSize: 13, color: "#5C5C5C" }}>{item}</span>
               </div>
             ))}
@@ -717,7 +717,7 @@ function SEOContent() {
                 <p style={{ fontSize: 11, color: "#8B8B8B", margin: 0 }}>{tool.desc}</p>
               </div>
               <a href={tool.href} target="_blank" rel="noopener noreferrer"
-                style={{ fontSize: 11, color: "#8C7355", padding: "4px 8px", border: "1px solid #8C7355", textDecoration: "none", whiteSpace: "nowrap" }}>
+                style={{ fontSize: 11, color: "#0066FF", padding: "4px 8px", border: "1px solid #0066FF", textDecoration: "none", whiteSpace: "nowrap" }}>
                 Open ↗
               </a>
             </div>
@@ -734,7 +734,7 @@ function OrdersSection({ orders }: { orders: Order[] }) {
     <div style={{ background: "white", border: "1px solid #E2DFDA", borderRadius: 2 }}>
       <div style={{ padding: "16px 20px", borderBottom: "1px solid #E2DFDA", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h2 style={{ fontSize: 14, fontWeight: 700, margin: 0 }}>All Orders ({orders.length})</h2>
-        <a href="/admin/orders" style={{ fontSize: 12, color: "#8C7355", textDecoration: "none", fontWeight: 600 }}>Full Orders Page →</a>
+        <a href="/admin/orders" style={{ fontSize: 12, color: "#0066FF", textDecoration: "none", fontWeight: 600 }}>Full Orders Page →</a>
       </div>
 
       {/* Table header */}
@@ -760,7 +760,7 @@ function OrdersSection({ orders }: { orders: Order[] }) {
           <span style={{
             fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase",
             padding: "3px 8px", display: "inline-block",
-            background: o.status === "delivered" ? "#111111" : o.status === "paid" ? "#8C7355" : "#E2DFDA",
+            background: o.status === "delivered" ? "#111111" : o.status === "paid" ? "#0066FF" : "#E2DFDA",
             color: o.status === "pending" ? "#5C5C5C" : "white",
           }}>{o.status}</span>
         </a>
@@ -794,7 +794,7 @@ function SettingsSection() {
               </div>
             </div>
           ))}
-          <p style={{ fontSize: 12, color: "#8C7355", margin: 0 }}>To update contact info, use the Site Editor → Contact page.</p>
+          <p style={{ fontSize: 12, color: "#0066FF", margin: 0 }}>To update contact info, use the Site Editor → Contact page.</p>
         </div>
       </div>
 
@@ -816,7 +816,7 @@ function SettingsSection() {
               <span style={{
                 fontSize: 10, fontWeight: 700, padding: "3px 8px",
                 background: i.status === "connected" ? "rgba(74,140,106,0.12)" : "rgba(140,115,85,0.12)",
-                color: i.status === "connected" ? "#4A8C6A" : "#8C7355",
+                color: i.status === "connected" ? "#4A8C6A" : "#0066FF",
               }}>
                 {i.status === "connected" ? "● Connected" : "○ Not Set Up"}
               </span>
@@ -828,7 +828,7 @@ function SettingsSection() {
       <div style={{ background: "white", border: "1px solid #E2DFDA", borderRadius: 2, padding: 24 }}>
         <h3 style={{ fontSize: 15, fontWeight: 700, margin: "0 0 12px" }}>Account</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <a href="/auth/login" style={{ fontSize: 13, color: "#8C7355", textDecoration: "none", fontWeight: 600 }}>Change Password →</a>
+          <a href="/auth/login" style={{ fontSize: 13, color: "#0066FF", textDecoration: "none", fontWeight: 600 }}>Change Password →</a>
           <a href="/" style={{ fontSize: 13, color: "#5C5C5C", textDecoration: "none" }}>← Back to Site</a>
         </div>
       </div>

@@ -1,4 +1,4 @@
-export const metadata = { title: "Apps & Plugins — ADESSO Admin" };
+﻿export const metadata = { title: "Apps & Plugins — ADESSO Admin" };
 
 const INSTALLED = [
   { name: "Supabase",            version: "2.x",    category: "Database",     icon: "⬡", status: "active",   desc: "Database, Auth & Storage" },
@@ -134,7 +134,7 @@ export default function PluginsPage() {
                   target="_blank"
                   rel="noreferrer"
                   style={{
-                    color: "#8C7355", fontSize: "10px", textDecoration: "none",
+                    color: "#0066FF", fontSize: "10px", textDecoration: "none",
                     padding: "5px 12px", background: "rgba(140,115,85,0.1)",
                     borderRadius: "2px", border: "1px solid rgba(140,115,85,0.2)",
                     display: "inline-block",

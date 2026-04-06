@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback } from "react";
 
@@ -72,7 +72,7 @@ export default function MetaClient() {
       onClick={() => setActiveTab(id)}
       style={{
         padding: "8px 18px", fontSize: "11px", fontWeight: 600,
-        background: activeTab === id ? "#8C7355" : "none",
+        background: activeTab === id ? "#0066FF" : "none",
         border: "none", borderBottom: activeTab === id ? "none" : "2px solid transparent",
         color: activeTab === id ? "#fff" : "#555",
         cursor: "pointer", borderRadius: "3px 3px 0 0",
@@ -104,7 +104,7 @@ export default function MetaClient() {
           <a
             href="https://www.facebook.com/events_manager"
             target="_blank" rel="noreferrer"
-            style={{ background: "#141414", color: "#8C7355", padding: "9px 16px", fontSize: "11px", textDecoration: "none", borderRadius: "2px", border: "1px solid #252525" }}
+            style={{ background: "#141414", color: "#0066FF", padding: "9px 16px", fontSize: "11px", textDecoration: "none", borderRadius: "2px", border: "1px solid #252525" }}
           >
             Events Manager →
           </a>
@@ -230,7 +230,7 @@ export default function MetaClient() {
                 onClick={save}
                 disabled={saveState === "saving" || loading}
                 style={{
-                  background: saveState === "saved" ? "#2D5A27" : saveState === "error" ? "#6B2727" : "#8C7355",
+                  background: saveState === "saved" ? "#2D5A27" : saveState === "error" ? "#6B2727" : "#0066FF",
                   color: "#fff", border: "none",
                   fontSize: "11px", fontWeight: 700, padding: "10px 20px",
                   borderRadius: "3px", cursor: saveState === "saving" ? "not-allowed" : "pointer",
@@ -247,7 +247,7 @@ export default function MetaClient() {
                 <p style={{ color: "#555", fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 10px" }}>
                   Código gerado — injetado automaticamente
                 </p>
-                <pre style={{ color: "#8C7355", fontSize: "10px", margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.8, overflowX: "auto" }}>
+                <pre style={{ color: "#0066FF", fontSize: "10px", margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.8, overflowX: "auto" }}>
 {`<!-- Meta Pixel -->
 <script>
   !function(f,b,e,v,n,t,s){...}(window,
@@ -305,7 +305,7 @@ export default function MetaClient() {
                 display: "flex", justifyContent: "space-between", alignItems: "center",
               }}>
                 <div>
-                  <code style={{ color: "#8C7355", fontSize: "12px", fontWeight: 600 }}>{ev.name}</code>
+                  <code style={{ color: "#0066FF", fontSize: "12px", fontWeight: 600 }}>{ev.name}</code>
                   <p style={{ color: "#555", fontSize: "11px", margin: "2px 0 0" }}>{ev.desc}</p>
                 </div>
                 <span style={{
@@ -324,9 +324,9 @@ export default function MetaClient() {
           <div style={{ background: "#0D0D0D", border: "1px solid #1E1E1E", borderRadius: "4px", padding: "16px 20px" }}>
             <p style={{ color: "#777", fontSize: "12px", fontWeight: 600, margin: "0 0 6px" }}>Como funcionam os eventos</p>
             <p style={{ color: "#444", fontSize: "11px", margin: 0, lineHeight: 1.7 }}>
-              O pixel dispara automaticamente <code style={{ color: "#8C7355" }}>PageView</code> em cada página.
-              O evento <code style={{ color: "#8C7355" }}>Contact</code> é enviado ao submeter o formulário de contacto.
-              O evento <code style={{ color: "#8C7355" }}>Purchase</code> é enviado após o pagamento Stripe confirmado.
+              O pixel dispara automaticamente <code style={{ color: "#0066FF" }}>PageView</code> em cada página.
+              O evento <code style={{ color: "#0066FF" }}>Contact</code> é enviado ao submeter o formulário de contacto.
+              O evento <code style={{ color: "#0066FF" }}>Purchase</code> é enviado após o pagamento Stripe confirmado.
               Ativa a Conversions API para tracking server-side sem dependência de cookies.
             </p>
           </div>

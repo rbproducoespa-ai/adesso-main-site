@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export const metadata = { title: "Marketing Tools — ADESSO Admin" };
 
@@ -40,7 +40,7 @@ export default function MarketingPage() {
             <Link
               href="/admin/contacts"
               style={{
-                background: "#8C7355", color: "#fff", padding: "6px 14px",
+                background: "#0066FF", color: "#fff", padding: "6px 14px",
                 fontSize: "10px", fontWeight: 700, textDecoration: "none",
                 letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: "2px",
               }}
@@ -127,7 +127,7 @@ export default function MarketingPage() {
                     </span>
                   </div>
                   <p style={{ color: "#444", fontSize: "10px", margin: "0 0 6px" }}>{lc.page}</p>
-                  <p style={{ color: "#8C7355", fontSize: "11px", margin: 0, fontWeight: 600 }}>
+                  <p style={{ color: "#0066FF", fontSize: "11px", margin: 0, fontWeight: 600 }}>
                     {lc.leads} leads
                   </p>
                 </div>
@@ -159,7 +159,7 @@ export default function MarketingPage() {
                     target="_blank"
                     rel="noreferrer"
                     style={{
-                      color: "#8C7355", fontSize: "10px", textDecoration: "none",
+                      color: "#0066FF", fontSize: "10px", textDecoration: "none",
                       padding: "4px 10px", background: "rgba(140,115,85,0.1)",
                       borderRadius: "2px", border: "1px solid rgba(140,115,85,0.2)",
                       flexShrink: 0,

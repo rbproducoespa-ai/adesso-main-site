@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const CATEGORIES = ["Exhibition", "Automation", "Leads", "Industry", "Case Study", "General"];
 
@@ -27,64 +27,52 @@ const S = {
   field: { marginBottom: "20px" },
 };
 
-interface PostForm {
-  title: string;
-  slug: string;
-  category: string;
-  author: string;
-  excerpt: string;
-  content: string;
-  cover_image: string;
-  status: "draft" | "published";
-  seo_title: string;
-  seo_description: string;
-}
-
-export default function EditBlogPostPage() {
+export default function NewBlogPostPage() {
   const router = useRouter();
-  const params = useParams();
-  const id = params?.id as string;
-
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState<"idle" | "saving" | "deleting">("idle");
+  const [saving, setSaving] = useState<"idle" | "saving" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
-  const [form, setForm] = useState<PostForm>({
-    title: "", slug: "", category: "General", author: "",
-    excerpt: "", content: "", cover_image: "", status: "draft",
-    seo_title: "", seo_description: "",
+  const [form, setForm] = useState({
+    title: "",
+    slug: "",
+    category: "General",
+    author: "",
+    excerpt: "",
+    content: "",
+    cover_image: "",
+    status: "draft" as "draft" | "published",
+    seo_title: "",
+    seo_description: "",
   });
 
-  useEffect(() => {
-    if (!id) return;
-    fetch(`/api/blog/${id}`)
-      .then(r => r.json())
-      .then(({ data, error: e }) => {
-        if (e || !data) { setError("Post not found"); setLoading(false); return; }
-        setForm({
-          title: data.title ?? "",
-          slug: data.slug ?? "",
-          category: data.category ?? "General",
-          author: data.author ?? "",
-          excerpt: data.excerpt ?? "",
-          content: data.content ?? "",
-          cover_image: data.cover_image ?? "",
-          status: (data.status ?? "draft") as "draft" | "published",
-          seo_title: data.seo_title ?? "",
-          seo_description: data.seo_description ?? "",
-        });
-        setLoading(false);
-      })
-      .catch(() => { setError("Failed to load post"); setLoading(false); });
-  }, [id]);
+  function slugify(val: string) {
+    return val
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .trim();
+  }
+
+  function handleTitleChange(val: string) {
+    setForm(f => ({
+      ...f,
+      title: val,
+      slug: f.slug === "" || f.slug === slugify(f.title) ? slugify(val) : f.slug,
+    }));
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!form.title.trim() || !form.slug.trim()) {
+      setError("Title and slug are required.");
+      return;
+    }
     setSaving("saving");
     setError(null);
     try {
-      const res = await fetch(`/api/blog/${id}`, {
-        method: "PATCH",
+      const res = await fetch("/api/blog", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
@@ -96,29 +84,8 @@ export default function EditBlogPostPage() {
       router.push("/admin/blog");
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
-      setSaving("idle");
+      setSaving("error");
     }
-  }
-
-  async function handleDelete() {
-    if (!window.confirm("Delete this post? This cannot be undone.")) return;
-    setSaving("deleting");
-    try {
-      const res = await fetch(`/api/blog/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Failed to delete");
-      router.push("/admin/blog");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Delete failed");
-      setSaving("idle");
-    }
-  }
-
-  if (loading) {
-    return (
-      <div style={{ padding: "28px 32px" }}>
-        <p style={{ color: "#555", fontSize: "13px" }}>Loading post...</p>
-      </div>
-    );
   }
 
   return (
@@ -127,11 +94,9 @@ export default function EditBlogPostPage() {
       {/* Header */}
       <div style={{ marginBottom: "28px" }}>
         <p style={{ color: "#555", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 4px" }}>
-          Admin › Blog › Edit Post
+          Admin › Blog › New Post
         </p>
-        <h2 style={{ color: "#fff", fontSize: "20px", fontWeight: 700, margin: 0 }}>
-          {form.title || "Edit Post"}
-        </h2>
+        <h2 style={{ color: "#fff", fontSize: "20px", fontWeight: 700, margin: 0 }}>Create New Post</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -145,7 +110,7 @@ export default function EditBlogPostPage() {
                 <input
                   style={S.input}
                   value={form.title}
-                  onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
+                  onChange={e => handleTitleChange(e.target.value)}
                   placeholder="Post title..."
                   required
                 />
@@ -158,7 +123,7 @@ export default function EditBlogPostPage() {
                   <input
                     style={S.input}
                     value={form.slug}
-                    onChange={e => setForm(f => ({ ...f, slug: e.target.value.toLowerCase().replace(/\s+/g, "-") }))}
+                    onChange={e => setForm(f => ({ ...f, slug: slugify(e.target.value) }))}
                     placeholder="my-post-slug"
                     required
                   />
@@ -227,7 +192,10 @@ export default function EditBlogPostPage() {
                 <select
                   value={form.status}
                   onChange={e => setForm(f => ({ ...f, status: e.target.value as "draft" | "published" }))}
-                  style={{ ...S.input, appearance: "none" as const, cursor: "pointer" }}
+                  style={{
+                    ...S.input,
+                    appearance: "none" as const, cursor: "pointer",
+                  }}
                 >
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
@@ -242,46 +210,29 @@ export default function EditBlogPostPage() {
 
               <button
                 type="submit"
-                disabled={saving !== "idle"}
+                disabled={saving === "saving"}
                 style={{
                   width: "100%", padding: "10px",
-                  background: saving === "saving" ? "#555" : "#8C7355",
+                  background: saving === "saving" ? "#555" : "#0066FF",
                   border: "none", color: "#fff",
                   fontSize: "11px", fontWeight: 700,
                   letterSpacing: "0.12em", textTransform: "uppercase",
-                  cursor: saving !== "idle" ? "default" : "pointer",
-                  borderRadius: "3px", marginBottom: "8px",
+                  cursor: saving === "saving" ? "default" : "pointer",
+                  borderRadius: "3px",
                 }}
               >
-                {saving === "saving" ? "Saving..." : "Update Post"}
+                {saving === "saving" ? "Saving..." : form.status === "published" ? "Publish Post" : "Save Draft"}
               </button>
 
               <a
                 href="/admin/blog"
                 style={{
-                  display: "block", textAlign: "center", marginBottom: "12px",
+                  display: "block", textAlign: "center", marginTop: "8px",
                   color: "#444", fontSize: "11px", textDecoration: "none",
                 }}
               >
-                ← Back to Blog
+                ← Cancel
               </a>
-
-              <div style={{ borderTop: "1px solid #1A1A1A", paddingTop: "12px" }}>
-                <button
-                  type="button"
-                  onClick={handleDelete}
-                  disabled={saving !== "idle"}
-                  style={{
-                    width: "100%", padding: "8px",
-                    background: "transparent", border: "1px solid #3A1E1E",
-                    color: "#8C3535", fontSize: "10px", fontWeight: 600,
-                    cursor: saving !== "idle" ? "default" : "pointer",
-                    borderRadius: "3px",
-                  }}
-                >
-                  {saving === "deleting" ? "Deleting..." : "Delete Post"}
-                </button>
-              </div>
             </div>
 
             {/* Meta */}

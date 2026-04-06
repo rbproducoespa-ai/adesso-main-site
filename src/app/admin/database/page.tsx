@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 
 export const metadata = { title: "Database — ADESSO Admin" };
@@ -157,7 +157,7 @@ export default async function DatabasePage() {
           target="_blank"
           rel="noreferrer"
           style={{
-            background: "#141414", color: "#8C7355", padding: "9px 16px",
+            background: "#141414", color: "#0066FF", padding: "9px 16px",
             fontSize: "11px", textDecoration: "none", borderRadius: "2px",
             border: "1px solid #252525",
           }}
@@ -171,7 +171,7 @@ export default async function DatabasePage() {
         {[
           { label: "Tables Ready",   value: existingCount,     color: "#3D7A4E" },
           { label: "Tables Missing", value: missingCount,      color: missingCount > 0 ? "#8C3535" : "#555" },
-          { label: "Total Rows",     value: TABLES.reduce((s, t) => s + (t.rows ?? 0), 0), color: "#8C7355" },
+          { label: "Total Rows",     value: TABLES.reduce((s, t) => s + (t.rows ?? 0), 0), color: "#0066FF" },
         ].map(s => (
           <div key={s.label} style={{
             background: "#141414", border: "1px solid #1E1E1E",
@@ -201,7 +201,7 @@ export default async function DatabasePage() {
                     {t.status === "exists" && (
                       <span style={{
                         fontSize: "9px", fontWeight: 700,
-                        color: "#8C7355", background: "rgba(140,115,85,0.1)",
+                        color: "#0066FF", background: "rgba(140,115,85,0.1)",
                         padding: "1px 6px", borderRadius: "8px",
                       }}>
                         {t.rows} rows
@@ -228,7 +228,7 @@ export default async function DatabasePage() {
                   Run in Supabase SQL Editor:
                 </p>
                 <pre style={{
-                  color: "#8C7355", fontSize: "10px", margin: 0,
+                  color: "#0066FF", fontSize: "10px", margin: 0,
                   fontFamily: "monospace", lineHeight: 1.7,
                   overflowX: "auto", whiteSpace: "pre-wrap",
                 }}>
@@ -249,7 +249,7 @@ export default async function DatabasePage() {
           Full Migration File Available
         </p>
         <p style={{ color: "#444", fontSize: "11px", margin: 0, lineHeight: 1.6 }}>
-          Run <code style={{ color: "#8C7355" }}>supabase/content-schema.sql</code> in your Supabase SQL Editor
+          Run <code style={{ color: "#0066FF" }}>supabase/content-schema.sql</code> in your Supabase SQL Editor
           to create all missing tables at once with proper RLS policies and storage buckets.
         </p>
       </div>

@@ -1,4 +1,4 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import { InboxClient } from "./_components/InboxClient";
 
 export const metadata = { title: "Inbox — ADESSO Admin" };
@@ -26,7 +26,7 @@ export default async function InboxPage() {
             Inbox
             {unread > 0 && (
               <span style={{
-                background: "#8C7355", color: "#fff",
+                background: "#0066FF", color: "#fff",
                 fontSize: "11px", fontWeight: 700,
                 padding: "2px 8px", borderRadius: "20px",
               }}>
@@ -39,7 +39,7 @@ export default async function InboxPage() {
         <a
           href="mailto:contact@adesso.digital"
           style={{
-            background: "#8C7355", color: "#fff", padding: "9px 18px",
+            background: "#0066FF", color: "#fff", padding: "9px 18px",
             fontSize: "11px", fontWeight: 700, textDecoration: "none",
             letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "2px",
           }}
@@ -57,7 +57,7 @@ export default async function InboxPage() {
           <p style={{ color: "#777", fontSize: "14px", fontWeight: 600, margin: "0 0 8px" }}>Your inbox is empty</p>
           <p style={{ color: "#444", fontSize: "12px", margin: 0, lineHeight: 1.6 }}>
             Messages from your contact form will appear here.<br />
-            Form submissions save to the <code style={{ color: "#8C7355" }}>form_submissions</code> table in Supabase.
+            Form submissions save to the <code style={{ color: "#0066FF" }}>form_submissions</code> table in Supabase.
           </p>
         </div>
       ) : (

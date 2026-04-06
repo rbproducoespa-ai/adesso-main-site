@@ -1,4 +1,4 @@
-export const metadata = { title: "Developer Mode — ADESSO Admin" };
+﻿export const metadata = { title: "Developer Mode — ADESSO Admin" };
 
 const ENV_VARS = [
   { key: "NEXT_PUBLIC_SUPABASE_URL",        required: true,  desc: "Supabase project URL" },
@@ -45,7 +45,7 @@ const CODE_STRUCTURE = [
 
 function MethodBadge({ method }: { method: string }) {
   const colors: Record<string, string> = {
-    GET: "#4A6C8C", POST: "#3D7A4E", DELETE: "#8C3535", PUT: "#6B4C8C", PATCH: "#8C7355",
+    GET: "#4A6C8C", POST: "#3D7A4E", DELETE: "#8C3535", PUT: "#6B4C8C", PATCH: "#0066FF",
   };
   return (
     <span style={{
@@ -82,7 +82,7 @@ export default function DevModePage() {
                 borderBottom: i < API_ROUTES.length - 1 ? "1px solid #181818" : "none",
               }}>
                 <MethodBadge method={r.method} />
-                <code style={{ color: "#8C7355", fontSize: "11px", flex: 1 }}>{r.path}</code>
+                <code style={{ color: "#0066FF", fontSize: "11px", flex: 1 }}>{r.path}</code>
                 <p style={{ color: "#444", fontSize: "10px", margin: 0 }}>{r.desc}</p>
               </div>
             ))}
@@ -99,7 +99,7 @@ export default function DevModePage() {
                 borderBottom: i < ENV_VARS.length - 1 ? "1px solid #181818" : "none",
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
-                  <code style={{ color: "#8C7355", fontSize: "10px" }}>{v.key}</code>
+                  <code style={{ color: "#0066FF", fontSize: "10px" }}>{v.key}</code>
                   <span style={{
                     fontSize: "8px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
                     color: v.required ? "#8C3535" : "#444",
@@ -152,7 +152,7 @@ export default function DevModePage() {
                 display: "flex", gap: "12px", alignItems: "center",
                 padding: "8px 0", borderBottom: "1px solid #1A1A1A",
               }}>
-                <code style={{ color: "#8C7355", fontSize: "11px", minWidth: "180px" }}>{s.path}</code>
+                <code style={{ color: "#0066FF", fontSize: "11px", minWidth: "180px" }}>{s.path}</code>
                 <p style={{ color: "#444", fontSize: "10px", margin: 0 }}>{s.desc}</p>
               </div>
             ))}
@@ -215,7 +215,7 @@ export default function DevModePage() {
               background: "#0D0D0D", border: "1px solid #1A1A1A",
               borderRadius: "3px", padding: "10px 14px",
             }}>
-              <code style={{ color: "#8C7355", fontSize: "11px", display: "block", marginBottom: "3px" }}>{c.cmd}</code>
+              <code style={{ color: "#0066FF", fontSize: "11px", display: "block", marginBottom: "3px" }}>{c.cmd}</code>
               <p style={{ color: "#444", fontSize: "10px", margin: 0 }}>{c.desc}</p>
             </div>
           ))}

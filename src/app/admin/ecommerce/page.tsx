@@ -1,11 +1,11 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
+﻿import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 
 export const metadata = { title: "Ecommerce — ADESSO Admin" };
 
 function statusColor(status: string) {
   if (status === "paid" || status === "delivered") return "#3D7A4E";
-  if (status === "pending") return "#8C7355";
+  if (status === "pending") return "#0066FF";
   if (status === "cancelled") return "#8C3535";
   return "#555";
 }
@@ -48,7 +48,7 @@ export default async function EcommercePage() {
         <Link
           href="/admin/orders"
           style={{
-            background: "#8C7355", color: "#fff", padding: "9px 18px",
+            background: "#0066FF", color: "#fff", padding: "9px 18px",
             fontSize: "11px", fontWeight: 700, textDecoration: "none",
             letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "2px",
           }}
@@ -60,9 +60,9 @@ export default async function EcommercePage() {
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "12px", marginBottom: "28px" }}>
         {[
-          { label: "Total Orders",  value: total ?? 0,               color: "#8C7355" },
+          { label: "Total Orders",  value: total ?? 0,               color: "#0066FF" },
           { label: "Paid",          value: paid ?? 0,                color: "#3D7A4E" },
-          { label: "Pending",       value: pending ?? 0,             color: "#8C7355" },
+          { label: "Pending",       value: pending ?? 0,             color: "#0066FF" },
           { label: "Cancelled",     value: cancelled ?? 0,           color: "#8C3535" },
           { label: "Total Revenue", value: fmt(revenue),             color: "#4A6C8C" },
         ].map(s => (
@@ -82,7 +82,7 @@ export default async function EcommercePage() {
           <p style={{ color: "#333", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", margin: 0 }}>
             Service Products
           </p>
-          <Link href="/admin/pages" style={{ color: "#8C7355", fontSize: "11px", textDecoration: "none" }}>
+          <Link href="/admin/pages" style={{ color: "#0066FF", fontSize: "11px", textDecoration: "none" }}>
             Edit on site →
           </Link>
         </div>
@@ -110,7 +110,7 @@ export default async function EcommercePage() {
                   {p.status === "active" ? "● Live" : "Soon"}
                 </span>
               </div>
-              <p style={{ color: "#8C7355", fontSize: "12px", fontWeight: 700, margin: "0 0 4px" }}>{p.price}</p>
+              <p style={{ color: "#0066FF", fontSize: "12px", fontWeight: 700, margin: "0 0 4px" }}>{p.price}</p>
               <p style={{ color: "#444", fontSize: "9px", margin: 0, textTransform: "uppercase", letterSpacing: "0.1em" }}>{p.category}</p>
             </div>
           ))}
@@ -145,7 +145,7 @@ export default async function EcommercePage() {
                   <tr key={o.id} style={{ borderBottom: "1px solid #181818" }}>
                     <td style={{ padding: "10px 16px", color: "#ccc", fontSize: "12px" }}>{o.product_name}</td>
                     <td style={{ padding: "10px 16px", color: "#555", fontSize: "11px" }}>{o.customer_email}</td>
-                    <td style={{ padding: "10px 16px", color: "#8C7355", fontSize: "12px", fontWeight: 600 }}>{fmt(o.amount_pence)}</td>
+                    <td style={{ padding: "10px 16px", color: "#0066FF", fontSize: "12px", fontWeight: 600 }}>{fmt(o.amount_pence)}</td>
                     <td style={{ padding: "10px 16px" }}>
                       <span style={{
                         fontSize: "9px", fontWeight: 700, textTransform: "uppercase",

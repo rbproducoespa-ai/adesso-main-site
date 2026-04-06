@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useCallback } from "react";
 
@@ -98,7 +98,7 @@ export function InboxClient({ messages: initialMessages }: { messages: Message[]
                 padding: "12px 16px",
                 borderBottom: i < messages.length - 1 ? "1px solid #181818" : "none",
                 cursor: "pointer",
-                borderLeft: !m.read ? "2px solid #8C7355" : "2px solid transparent",
+                borderLeft: !m.read ? "2px solid #0066FF" : "2px solid transparent",
                 background: selected?.id === m.id ? "#1A1A1A" : "transparent",
               }}
             >
@@ -144,7 +144,7 @@ export function InboxClient({ messages: initialMessages }: { messages: Message[]
               {!selected.read && (
                 <span style={{
                   fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
-                  textTransform: "uppercase", color: "#8C7355",
+                  textTransform: "uppercase", color: "#0066FF",
                   background: "rgba(140,115,85,0.12)", padding: "3px 8px", borderRadius: "10px",
                 }}>
                   Unread
@@ -162,7 +162,7 @@ export function InboxClient({ messages: initialMessages }: { messages: Message[]
                   href={`mailto:${selected.email}`}
                   style={{
                     display: "inline-block",
-                    background: "#8C7355", color: "#fff",
+                    background: "#0066FF", color: "#fff",
                     padding: "9px 20px", fontSize: "11px",
                     fontWeight: 700, textDecoration: "none",
                     letterSpacing: "0.12em", textTransform: "uppercase",

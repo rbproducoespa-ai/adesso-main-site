@@ -42,7 +42,7 @@ const S = {
   // Node card
   nodeCard: (active: boolean, type: NodeType) => ({
     background: active ? "rgba(140,115,85,0.15)" : "#141414",
-    border: `1px solid ${active ? "#8C7355" : "#1E1E1E"}`,
+    border: `1px solid ${active ? "#0066FF" : "#1E1E1E"}`,
     borderLeft: `3px solid ${typeColor(type)}`,
     padding: "10px 12px",
     marginBottom: "6px",
@@ -68,9 +68,9 @@ const S = {
     color: "#ddd", padding: "8px 10px", fontSize: "13px",
     outline: "none", width: "100%", boxSizing: "border-box" as const,
   },
-  saveBtn: { background: "#8C7355", color: "#fff", border: "none", padding: "10px 24px", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer" as const, textTransform: "uppercase" as const },
+  saveBtn: { background: "#0066FF", color: "#fff", border: "none", padding: "10px 24px", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer" as const, textTransform: "uppercase" as const },
   deleteBtn: { background: "#1E1E1E", color: "#888", border: "none", padding: "10px 16px", fontSize: "12px", cursor: "pointer" as const },
-  addBtn: { background: "#1E1E1E", color: "#8C7355", border: "1px solid #2a2a2a", padding: "8px 14px", fontSize: "11px", fontWeight: 600, cursor: "pointer" as const, width: "100%", textAlign: "center" as const },
+  addBtn: { background: "#1E1E1E", color: "#0066FF", border: "1px solid #2a2a2a", padding: "8px 14px", fontSize: "11px", fontWeight: 600, cursor: "pointer" as const, width: "100%", textAlign: "center" as const },
   optionRow: { background: "#1a1a1a", border: "1px solid #222", padding: "12px", marginBottom: "8px" },
   removeBtn: { background: "none", border: "none", color: "#555", cursor: "pointer" as const, fontSize: "14px", padding: "2px 4px" },
 };
@@ -78,7 +78,7 @@ const S = {
 function typeColor(type: NodeType): string {
   switch (type) {
     case "message": return "#3B82F6";
-    case "menu":    return "#8C7355";
+    case "menu":    return "#0066FF";
     case "wait_input": return "#A78BFA";
     case "transfer":   return "#F59E0B";
     case "end":        return "#EF4444";
@@ -197,7 +197,7 @@ export function FlowEditor({ flow: initialFlow, isNew }: { flow: Flow; isNew: bo
             type="checkbox"
             checked={flow.is_active}
             onChange={(e) => setMeta("is_active", e.target.checked)}
-            style={{ accentColor: "#8C7355" }}
+            style={{ accentColor: "#0066FF" }}
           />
           Fluxo ativo
         </label>
@@ -216,7 +216,7 @@ export function FlowEditor({ flow: initialFlow, isNew }: { flow: Flow; isNew: bo
             <span style={{ fontSize: "11px", fontWeight: 700, color: "#555", letterSpacing: "0.12em", textTransform: "uppercase" }}>
               Etapas ({flow.nodes.length})
             </span>
-            <button onClick={addNode} style={{ background: "#8C7355", color: "#fff", border: "none", padding: "4px 10px", fontSize: "11px", fontWeight: 700, cursor: "pointer" }}>
+            <button onClick={addNode} style={{ background: "#0066FF", color: "#fff", border: "none", padding: "4px 10px", fontSize: "11px", fontWeight: 700, cursor: "pointer" }}>
               + Etapa
             </button>
           </div>
@@ -307,7 +307,7 @@ function NodeEditor({
           <p style={{ fontSize: "10px", color: typeColor(node.type), fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", margin: "0 0 4px" }}>
             {typeLabel(node.type)}
           </p>
-          <h2 style={S2.title}>Editar etapa: <code style={{ fontSize: "16px", color: "#8C7355" }}>{node.id}</code></h2>
+          <h2 style={S2.title}>Editar etapa: <code style={{ fontSize: "16px", color: "#0066FF" }}>{node.id}</code></h2>
         </div>
         <button onClick={onDelete} style={{ background: "#1a0000", color: "#EF4444", border: "1px solid #2a0000", padding: "6px 14px", fontSize: "11px", cursor: "pointer" }}>
           Excluir etapa
