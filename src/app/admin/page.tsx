@@ -1,4 +1,3 @@
-import { createAdminSupabase } from "@/lib/supabase-admin";
 import Link from "next/link";
 import { QuickActions } from "./_components/DashboardClient";
 
@@ -14,46 +13,83 @@ function timeAgo(iso: string) {
   return `${Math.floor(h / 24)}d ago`;
 }
 
-export default async function AdminDashboardPage() {
-  const supabase = createAdminSupabase();
+async function getDashboardData() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const hasSupabase = supabaseUrl && !supabaseUrl.includes("YOUR_PROJECT_ID");
 
-  const [
-    { count: totalWaitlist },
-    { count: totalContacts },
-    { count: newContacts },
-    { data: recentContacts },
-    { data: recentWaitlist },
-  ] = await Promise.all([
-    supabase.from("waitlist").select("*", { count: "exact", head: true }),
-    supabase.from("contacts").select("*", { count: "exact", head: true }),
-    supabase.from("contacts").select("*", { count: "exact", head: true }).eq("status", "new"),
-    supabase.from("contacts")
-      .select("id,name,email,company,message,created_at,status")
-      .order("created_at", { ascending: false })
-      .limit(8),
-    supabase.from("waitlist")
-      .select("id,email,created_at")
-      .order("created_at", { ascending: false })
-      .limit(5),
-  ]);
+  if (!hasSupabase) {
+    return {
+      totalWaitlist: 0,
+      totalContacts: 0,
+      newContacts: 0,
+      recentContacts: [],
+      recentWaitlist: [],
+    };
+  }
+
+  try {
+    const { createAdminSupabase } = await import("@/lib/supabase-admin");
+    const supabase = createAdminSupabase();
+
+    const [
+      { count: totalWaitlist },
+      { count: totalContacts },
+      { count: newContacts },
+      { data: recentContacts },
+      { data: recentWaitlist },
+    ] = await Promise.all([
+      supabase.from("waitlist").select("*", { count: "exact", head: true }),
+      supabase.from("contacts").select("*", { count: "exact", head: true }),
+      supabase.from("contacts").select("*", { count: "exact", head: true }).eq("status", "new"),
+      supabase.from("contacts")
+        .select("id,name,email,company,message,created_at,status")
+        .order("created_at", { ascending: false })
+        .limit(8),
+      supabase.from("waitlist")
+        .select("id,email,created_at")
+        .order("created_at", { ascending: false })
+        .limit(5),
+    ]);
+
+    return {
+      totalWaitlist: totalWaitlist ?? 0,
+      totalContacts: totalContacts ?? 0,
+      newContacts: newContacts ?? 0,
+      recentContacts: recentContacts ?? [],
+      recentWaitlist: recentWaitlist ?? [],
+    };
+  } catch {
+    return {
+      totalWaitlist: 0,
+      totalContacts: 0,
+      newContacts: 0,
+      recentContacts: [],
+      recentWaitlist: [],
+    };
+  }
+}
+
+export default async function AdminDashboardPage() {
+  const { totalWaitlist, totalContacts, newContacts, recentContacts, recentWaitlist } =
+    await getDashboardData();
 
   const STATS = [
-    { label: "Waitlist Signups",   value: totalWaitlist ?? 0,  color: "#0066FF", href: "/admin/contacts" },
-    { label: "Total Enquiries",    value: totalContacts ?? 0,  color: "#00D4FF", href: "/admin/contacts" },
-    { label: "New (Unread)",       value: newContacts ?? 0,    color: "#00E5A0", href: "/admin/contacts" },
-    { label: "Early Access Goal",  value: "100",               color: "#4A5A7A", href: "/admin/contacts" },
+    { label: "Waitlist Signups",  value: totalWaitlist, color: "#0066FF", href: "/admin/contacts" },
+    { label: "Total Enquiries",   value: totalContacts, color: "#00D4FF", href: "/admin/contacts" },
+    { label: "New (Unread)",      value: newContacts,   color: "#00E5A0", href: "/admin/contacts" },
+    { label: "Early Access Goal", value: "100",         color: "#4A5A7A", href: "/admin/contacts" },
   ];
 
   const QUICK_ACTIONS = [
-    { label: "Site Editor",     href: "/admin/editor",      icon: "✏", desc: "Edit page content and copy" },
-    { label: "Blog",            href: "/admin/blog",        icon: "≡", desc: "Create & manage posts" },
-    { label: "CRM / Contacts",  href: "/admin/contacts",    icon: "◉", desc: "Leads & enquiry history" },
-    { label: "Forms & Leads",   href: "/admin/forms",       icon: "⊡", desc: "Form submissions" },
-    { label: "Inbox",           href: "/admin/inbox",       icon: "▣", desc: "Messages & notifications" },
-    { label: "Media Manager",   href: "/admin/media",       icon: "◈", desc: "Upload & organise files" },
-    { label: "SEO Manager",     href: "/admin/seo",         icon: "⌖", desc: "Meta tags & page titles" },
-    { label: "Analytics",       href: "/admin/analytics",   icon: "↗", desc: "Traffic & conversion data" },
-    { label: "Settings",        href: "/admin/settings",    icon: "⚙", desc: "Domain, email, config" },
+    { label: "Site Editor",    href: "/admin/editor",   icon: "✏", desc: "Edit page content and copy" },
+    { label: "Blog",           href: "/admin/blog",     icon: "≡", desc: "Create & manage posts" },
+    { label: "CRM / Contacts", href: "/admin/contacts", icon: "◉", desc: "Leads & enquiry history" },
+    { label: "Forms & Leads",  href: "/admin/forms",    icon: "⊡", desc: "Form submissions" },
+    { label: "Inbox",          href: "/admin/inbox",    icon: "▣", desc: "Messages & notifications" },
+    { label: "Media Manager",  href: "/admin/media",    icon: "◈", desc: "Upload & organise files" },
+    { label: "SEO Manager",    href: "/admin/seo",      icon: "⌖", desc: "Meta tags & page titles" },
+    { label: "Analytics",      href: "/admin/analytics",icon: "↗", desc: "Traffic & conversion data" },
+    { label: "Settings",       href: "/admin/settings", icon: "⚙", desc: "Domain, email, config" },
   ];
 
   return (
@@ -104,9 +140,12 @@ export default async function AdminDashboardPage() {
             </Link>
           </div>
 
-          {!recentContacts || recentContacts.length === 0 ? (
+          {recentContacts.length === 0 ? (
             <div style={{ padding: "40px 20px", textAlign: "center" }}>
-              <p style={{ color: "#4A5A7A", fontSize: "13px", margin: 0 }}>No enquiries yet</p>
+              <p style={{ color: "#4A5A7A", fontSize: "13px", margin: "0 0 8px" }}>No enquiries yet</p>
+              <p style={{ color: "#1A2540", fontSize: "11px", margin: 0, fontFamily: "monospace" }}>
+                Connect Supabase to track leads
+              </p>
             </div>
           ) : (
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -125,20 +164,11 @@ export default async function AdminDashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {(recentContacts ?? []).map((c: {
-                  id: string; name: string; email: string;
-                  company: string | null; status: string; created_at: string;
-                }) => (
+                {(recentContacts as { id: string; name: string; email: string; company: string | null; status: string; created_at: string }[]).map((c) => (
                   <tr key={c.id} style={{ borderBottom: "1px solid #0D1525" }}>
-                    <td style={{ padding: "10px 16px", fontSize: "12px", color: "#F0F4FF", fontWeight: 600 }}>
-                      {c.name}
-                    </td>
-                    <td style={{ padding: "10px 16px", fontSize: "12px", color: "#8899BB" }}>
-                      {c.company ?? "—"}
-                    </td>
-                    <td style={{ padding: "10px 16px", fontSize: "11px", color: "#4A5A7A", maxWidth: "160px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                      {c.email}
-                    </td>
+                    <td style={{ padding: "10px 16px", fontSize: "12px", color: "#F0F4FF", fontWeight: 600 }}>{c.name}</td>
+                    <td style={{ padding: "10px 16px", fontSize: "12px", color: "#8899BB" }}>{c.company ?? "—"}</td>
+                    <td style={{ padding: "10px 16px", fontSize: "11px", color: "#4A5A7A", maxWidth: "160px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.email}</td>
                     <td style={{ padding: "10px 16px" }}>
                       <span style={{
                         fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em",
@@ -167,20 +197,20 @@ export default async function AdminDashboardPage() {
             <p style={{ color: "#F0F4FF", fontSize: "12px", fontWeight: 700, margin: 0 }}>Waitlist</p>
           </div>
 
-          {!recentWaitlist || recentWaitlist.length === 0 ? (
+          {recentWaitlist.length === 0 ? (
             <div style={{ padding: "32px 20px", textAlign: "center" }}>
-              <p style={{ color: "#4A5A7A", fontSize: "13px", margin: 0 }}>No signups yet</p>
+              <p style={{ color: "#4A5A7A", fontSize: "13px", margin: "0 0 8px" }}>No signups yet</p>
+              <p style={{ color: "#1A2540", fontSize: "11px", margin: 0, fontFamily: "monospace" }}>
+                Connect Supabase to track signups
+              </p>
             </div>
           ) : (
             <div>
-              {(recentWaitlist ?? []).map((w: { id: string; email: string; created_at: string }) => (
-                <div
-                  key={w.id}
-                  style={{
-                    padding: "12px 20px", borderBottom: "1px solid #1A2540",
-                    display: "flex", alignItems: "center", justifyContent: "space-between",
-                  }}
-                >
+              {(recentWaitlist as { id: string; email: string; created_at: string }[]).map((w) => (
+                <div key={w.id} style={{
+                  padding: "12px 20px", borderBottom: "1px solid #1A2540",
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                }}>
                   <span style={{ fontSize: "12px", color: "#8899BB", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
                     {w.email}
                   </span>
