@@ -15,11 +15,31 @@ Todo dado marcado ✅ neste projeto vem desta lista. Coletado em **11/08/2026**,
 | [SB24Horas — Casal fenômeno da internet](https://sb24horas.com.br/casal-fenomeno-da-internet-karina-peloi-e-wendell-carvalho-tem-mais-de-10-milhoes-de-seguidores/) | Marca de casal; +10M de seguidores; Karina Peloi co-fundadora |
 | [Diário do Comércio — Hotmart aposta em gamificação](https://diariodocomercio.com.br/negocios/hotmart-aposta-em-estrategia-de-gamificacao/) | Único creator no nível "Cosmos" da Hotmart |
 
+## Biografia e trajetória — base do documento [`11`](./11-trajetoria-e-patrimonio.md)
+
+| Fonte | O que sustenta |
+|---|---|
+| [Querobolsa — quem é, formação e trajetória de vida](https://querobolsa.com.br/revista/wendell-carvalho) | Nascimento em Cuiabá; família humilde; graduação em Turismo; demissão da rede hoteleira; 4 anos no varejo (vendedor → prevenção de perdas → gerente → expansão); origem da carreira de treinador |
+| [Portal Insights — Qual a formação do Wendell Carvalho](https://www.portalinsights.com.br/perguntas-frequentes/qual-a-formacao-do-wendell-carvalho) | MBA em Liderança Organizacional (FranklinCovey); formação em PNL; coach certificado pelo ICI |
+| [Mindset Visionário — Trajetória de superação](http://www.mindsetvisionario.com/2023/07/historia-wendell-carvalho.html) | Certificação ICI em 2011; percurso do varejo ao coaching |
+| [OsPaparazzi — Quem é Wendell Carvalho](https://www.ospaparazzi.com/celebridades/wendell-carvalho) | Data de nascimento 13/08/1980; origem familiar |
+| [LinkedIn — perfil pessoal](https://br.linkedin.com/in/wendell-carvalho-11b27b11) | Coach executivo e diretor da Kairos |
+| [Pixeld News — R$ 250 milhões na Hotmart Journey](https://pixeld.news/wendell-carvalho-bate-150-milhoes-na-hotmart/) | **Primeiro pagamento de R$ 11 em 2013**; marco Cosmos I; capacete inédito |
+| [YouTube/Hotmart — Quem foi o primeiro creator a bater 250 milhões](https://www.youtube.com/watch?v=FUv8wgrHuPA) | Marco histórico na plataforma |
+| [RDNews (MT) — Coach Wendell Carvalho dá dicas para metas em 2016](https://www.rdnews.com.br/final-de-semana/variedades/coach-wendell-carvalho-da-dicas-para-concluir-as-metas-em-2016/67679) | **Prova de que em 2016 ainda era figura de alcance regional** |
+| [Método Cronos — página oficial](https://wendellcarvalho.com.br/metodo-cronos/) | Origem do produto nas dores pessoais dele |
+| [Sobre Wendell Carvalho — site oficial](https://wendellcarvalho.com.br/sobre-wendell-carvalho/) | Autonarrativa institucional |
+| [Portal Insights — Qual patrimônio Wendell Carvalho](https://www.portalinsights.com.br/perguntas-frequentes/qual-patrimonio-wendell-carvalho) · [Auditório Ibirapuera — Como ficou rico](https://www.auditorioibirapuera.com.br/como-wendell-carvalho-ficou-rico) | Estimativa de terceiros (>R$ 100M) e declaração de renda >R$ 1M/mês — **não auditadas** |
+| [Você Pergunta — Como Karina conheceu Wendell](https://vocepergunta.com/library/artigo/read/19422-como-karina-conheceu-wendell) | Origem da sociedade pessoal e empresarial |
+| [Única News — Sócio de barbearia](https://www.unicanews.com.br/variedades/wendell-carvalho-vira-socio-de-barbearia-e-planeja-expansao-agressiva/106745) | Côrte Visagismo; meta de 100 unidades; lojas próprias com abertura a franquia |
+
 ## Dados societários
 
 | Fonte | O que sustenta |
 |---|---|
 | [Econodata — Kairos Treinamentos e Capacitação Profissional Ltda](https://www.econodata.com.br/consulta-empresa/11957930000154-kairos-treinamentos-e-capacitacao-profissional-ltda) | CNPJ 11.957.930/0001-54; nome fantasia Grupo Virtus; fundação 18/05/2010 |
+| [CNPJ.biz — Grupo Virtus](https://cnpj.biz/11957930000154) | Sócios-administradores: Karina Peloi e Wendell Alves Almeida Rezende Carvalho |
+| [LinkedIn — Grupo Virtus](https://br.linkedin.com/company/grupovirtusbr) | R$ 130M/ano; 170+ colaboradores |
 | [LinkedIn — Kairos Treinamentos](https://br.linkedin.com/company/kairos-treinamentos-lideran-a-confian-a-vendas-e-coaching) | Escopo do B2B: liderança, vendas, gestão de tempo, coaching |
 
 ## Produtos, preços e funil
@@ -86,3 +106,5 @@ Títulos indexados: `[PRO-E033-SP] – VENDAS MÃE AA – LONGA`, `[PRO-E029-POA
 3. **Números de divulgação são inconsistentes entre si** (260 mil vs 1,1 milhão de alunos; R$ 250M vs R$ 500M). Use ordem de grandeza.
 4. **As reclamações são versões de consumidores**, não fatos julgados. São usadas aqui como **mapa de risco do modelo de negócio**, não como juízo sobre a empresa.
 5. **Os números de [`06`](./06-unit-economics.md) são modelagem**, construída com premissas de mercado — não são dados financeiros dele.
+6. **Não há dado patrimonial auditado.** Faturamento de grupo (R$ 130M/ano) é verificável; patrimônio pessoal não é. A cifra de ">R$ 100M" que circula é estimativa de terceiros, e exibição de estilo de vida nas redes é ferramenta de marketing deste nicho — não comprovação financeira. O documento [`11`](./11-trajetoria-e-patrimonio.md) separa explicitamente as duas coisas.
+7. **A biografia vem majoritariamente de material de divulgação** — site oficial, entrevistas e portais que reproduzem o release. É a versão que ele conta sobre si. Os dois pontos de checagem independente são o registro societário (Econodata/CNPJ) e a matéria regional de 2016 no RDNews, que confirma o alcance limitado naquela época.

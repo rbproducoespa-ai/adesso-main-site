@@ -55,6 +55,7 @@ Quem tenta copiar só a parte do Instagram copia o custo e não copia a receita.
 | 08 | [`08-riscos-e-conformidade.md`](./08-riscos-e-conformidade.md) | O que **não** copiar: CDC, CONAR, o passivo do Reclame Aqui |
 | 09 | [`09-templates/`](./09-templates/) | Ganchos, roteiros, scripts de venda, sequências de mensagem |
 | 10 | [`10-metricas.md`](./10-metricas.md) | O painel de controle: o que medir e quais são os números-alvo |
+| 11 | [`11-trajetoria-e-patrimonio.md`](./11-trajetoria-e-patrimonio.md) | A vida dele: origem, linha do tempo, o que ele tem hoje e os 8 mecanismos que explicam como chegou lá |
 | — | [`calculadora.mjs`](./calculadora.mjs) | Calculadora executável de unit economics (`node calculadora.mjs`) |
 | — | [`fontes.md`](./fontes.md) | Todas as fontes públicas usadas |
 
@@ -63,6 +64,8 @@ Quem tenta copiar só a parte do Instagram copia o custo e não copia a receita.
 ## Como usar este projeto
 
 **Se você quer entender o modelo:** leia 01 → 02 → 05. Uma hora.
+
+**Se você quer entender a pessoa e a trajetória:** leia 11. É o documento que explica por que a sequência do plano é o que é — e por que ela é mais lenta do que o marketing do nicho sugere.
 
 **Se você quer executar:** leia 06 (a matemática precisa fechar antes de qualquer coisa) → 07 (o plano) → 09 (os templates). Depois volte no 08 antes de publicar qualquer promessa.
 
