@@ -67,8 +67,8 @@ RLS policies, seed. Full field list and rationale in `DATABASE.md`.
 | Phase | Scope | Status |
 |-------|-------|--------|
 | 1  | Foundation, auth, database, navigation, design system | **Done** |
-| 2  | Characters, Character Bible, assets, consistency engine | Next |
-| 3  | Discover, references, Viral Mirror Engine, Content DNA | |
+| 2  | Characters, Character Bible, assets, consistency engine | **Done** |
+| 3  | Discover, references, Viral Mirror Engine, Content DNA | Next |
 | 4  | Hooks, scripts, Original Version Generator | |
 | 5  | Production pipeline, calendar, asset library | |
 | 6  | Product intelligence, character matching | |
@@ -113,21 +113,66 @@ enforced as soon as Phase 5 creates productions.
 | `next build` | Pass — 83 pages, all 16 `/network` routes emitted |
 | Migrations | Applied to a real Postgres 16 instance: 22 tables, RLS on all 22, 87 policies, 57 indexes. Seed verified idempotent over three runs; RLS verified for non-member / owner / viewer. |
 
-### Phase 2 — next
+### Phase 2 — delivered
 
-1. Add a test runner (Vitest) and cover the KPI aggregation in `queries.ts`
-   first — Phase 1 closed with 3 of the 4 gates because the repo has no tests.
-2. Character list and Character Bible editor over `cn_characters`.
-3. Reference asset upload to Supabase Storage → `cn_character_assets`.
-4. Consistency engine: compose `CHARACTER + SCENE + ACTION + CLOTHING + CAMERA +
-   LIGHTING + EMOTION + DIALOGUE + PLATFORM` into a single prompt (spec §18).
-5. Couple-format support for Arthur + Rose without merging the entities (§8).
+- **Vitest**, closing the gate Phase 1 left open. `npm test` runs 39 tests.
+- **`src/lib/network/overview.ts`** — the KPI aggregation, extracted out of
+  `queries.ts` as a pure function so it can be tested without a database. The
+  fetching stayed in `queries.ts`; the counting moved here.
+- **`src/lib/network/consistency.ts`** — the consistency engine (§18).
+  `composePrompt()` builds `CHARACTER MASTER PROFILE + SCENE + ACTION + CLOTHING
+  + CAMERA + LIGHTING + EMOTION + DIALOGUE + PLATFORM FORMAT` for image, video,
+  voice, b-roll and thumbnail targets, and reports which Bible fields are still
+  missing for that target. `composeCouplePrompt()` handles Arthur + Rose (§8) by
+  layering a shared scene over two intact master profiles.
+- **`/network/characters`** — roster with a Bible-completeness bar per
+  character, so a thin Bible is visible before a bad render reveals it.
+- **`/network/characters/[slug]`** — the Character Bible editor: five field
+  groups, an asset panel, and a Consistency tab that renders the prompt the
+  pipeline would actually send for a sample scene, with a warning listing the
+  gaps.
+- **API** — `PATCH /api/network/characters/[id]` (explicit field allowlist, so a
+  client cannot re-point identity or partner links) and
+  `POST|DELETE /api/network/characters/[id]/assets` (upload to Supabase Storage
+  or register by URL; one primary per kind).
+- **`src/lib/network/auth.ts`** — route-level access control mirroring the
+  middleware gate. Route handlers are reachable directly and must not rely on
+  the page gate having run.
+
+#### Phase 2 gate results
+
+| Gate | Result |
+|------|--------|
+| `tsc --noEmit` | Pass — 0 errors |
+| `eslint .` | Pass — 0 errors, 34 warnings (all pre-existing) |
+| `npm test` | Pass — 39 tests across 2 files |
+| `next build` | Pass — 82 pages |
+| Smoke | Roster and both Bible pages 200; unknown slug 404; `PATCH` without a session returns 401 |
+
+Storage note: asset upload writes to the existing `site-assets` bucket under
+`network/characters/<id>/`, so no new bucket is required.
+
+### Phase 3 — next
+
+1. `/network/discover` — register references with metrics, product, category
+   and risk flags over `cn_references` (§19).
+2. Viral Mirror Engine over `cn_content_dna`: the 17 analysis fields, with no
+   transcript field by design (§20).
+3. Content DNA fingerprint and scoring (§21).
+4. Provider-backed analysis is **not** part of Phase 3 — the engine writes and
+   reads structured analysis; the AI adapters that fill it land in Phase 10.
+   Until then analysis is entered by an operator.
 
 ## 5. Working format
 
 **Branch and review.** One branch per phase, `claude/phase-N-<slug>`, opened as a
 draft PR. Phases land whole; half a phase across two PRs is worse than a phase
 that took longer.
+
+*Current exception:* Phases 1 and 2 share the branch
+`claude/formato-desenvolvimento-qz4q9q` and one PR, because Phase 1 had not been
+merged when Phase 2 began and this session is pinned to that branch. Once it
+merges, later phases go back to a branch each.
 
 **Phase gate.** A phase is not done until, in order:
 
