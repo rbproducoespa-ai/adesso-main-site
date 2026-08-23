@@ -169,10 +169,15 @@ Storage note: asset upload writes to the existing `site-assets` bucket under
 draft PR. Phases land whole; half a phase across two PRs is worse than a phase
 that took longer.
 
-*Current exception:* Phases 1 and 2 share the branch
-`claude/formato-desenvolvimento-qz4q9q` and one PR, because Phase 1 had not been
-merged when Phase 2 began and this session is pinned to that branch. Once it
-merges, later phases go back to a branch each.
+Phases are stacked with [Graphite](https://graphite.dev): each phase branches off
+the one before it rather than off `master`, so Phase N+1 can be built and
+reviewed while Phase N is still open. `gt log` shows the stack;
+`gt sync` restacks the children after a parent merges.
+
+    master
+     └─ claude/phase-1-network-os-foundation   (PR #4)
+         └─ claude/phase-2-character-bible     (PR #5)
+
 
 **Phase gate.** A phase is not done until, in order:
 
