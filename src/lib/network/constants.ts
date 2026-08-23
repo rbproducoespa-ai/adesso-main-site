@@ -35,7 +35,7 @@ export interface NavGroup {
   items: NavItem[];
 }
 
-export const CURRENT_PHASE = 1;
+export const CURRENT_PHASE = 2;
 
 /** Main navigation — spec §15, grouped by the loop it belongs to. */
 export const NAV_GROUPS: NavGroup[] = [
@@ -192,15 +192,6 @@ export const DAILY_QUESTIONS = [
  * instead of only in ROADMAP.md.
  */
 export const MODULE_SCOPE: Record<string, { spec: string; scope: string[] }> = {
-  "/network/characters": {
-    spec: "§17, §18",
-    scope: [
-      "Character Bible with the full field set per creator",
-      "Reference assets: face, full body, side, lifestyle, wardrobe, voice",
-      "Consistency engine that composes profile + scene + action + camera + emotion",
-      "Couple formats for Arthur + Rose without merging the two entities",
-    ],
-  },
   "/network/discover": {
     spec: "§19",
     scope: [

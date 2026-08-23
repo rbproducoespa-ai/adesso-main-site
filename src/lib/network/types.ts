@@ -61,6 +61,15 @@ export interface Character {
   backstory: string | null;
   brand_rules: string | null;
   safety_rules: string | null;
+  vocabulary: string[];
+  catchphrases: string[];
+  interests: string[];
+  things_character_says: string[];
+  things_character_never_says: string[];
+  face_reference: string | null;
+  body_description: string | null;
+  hair: string | null;
+  eyes: string | null;
   is_active: boolean;
   launch_order: number;
   partner_character_id: string | null;
@@ -71,8 +80,24 @@ export interface PlatformAccount {
   character_id: string;
   platform: Platform;
   handle: string | null;
+  profile_url: string | null;
   followers: number;
   is_live: boolean;
+}
+
+/** Reference assets that pin a character's look and voice — spec §18. */
+export type CharacterAssetKind =
+  | "face" | "full_body" | "side" | "lifestyle" | "wardrobe" | "voice";
+
+export interface CharacterAsset {
+  id: string;
+  character_id: string;
+  kind: string;
+  storage_path: string | null;
+  url: string | null;
+  is_primary: boolean;
+  notes: string | null;
+  created_at: string;
 }
 
 /** The five questions the product answers daily — spec §46, rendered on the dashboard. */

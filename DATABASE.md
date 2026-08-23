@@ -119,9 +119,21 @@ row without changing their own role; only admins change roles.
 The service-role key bypasses RLS entirely and is what server-side work uses
 (`src/lib/supabase-admin.ts`). It must never reach the browser.
 
+## Storage
+
+Character reference assets (`cn_character_assets`) are uploaded to the existing
+`site-assets` Supabase Storage bucket under `network/characters/<character_id>/`.
+No separate bucket is needed. The row holds both `storage_path` and the public
+`url`; deleting the row also removes the stored file when the OS uploaded it,
+and leaves it alone when the asset was registered by URL.
+
+Only one asset per kind is `is_primary` — promoting a new one demotes the
+previous. The consistency engine quotes the primary reference of each kind, so
+two candidates would mean no rule.
+
 ## Aggregation
 
-`src/lib/network/queries.ts` computes the dashboard KPIs in TypeScript from raw
-rows. That is correct at Phase 1 volume and wrong at scale: once publication
+`src/lib/network/overview.ts` computes the dashboard KPIs in TypeScript from raw
+rows fetched by `queries.ts`. That is correct at Phase 1 volume and wrong at scale: once publication
 counts pass a few thousand, move the aggregation into Postgres views or a
 materialised rollup refreshed on metric ingest. Phase 8 owns that change.
