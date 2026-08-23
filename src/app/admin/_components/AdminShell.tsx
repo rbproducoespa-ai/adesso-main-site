@@ -122,7 +122,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
       <aside style={{ ...S.sidebar, width: sidebarCollapsed ? "56px" : "232px", transition: "width 0.2s" }}>
 
         {/* Logo */}
-        <a href="/" style={{ ...S.logo, textDecoration: "none" }} title="Back to site">
+        <Link href="/" style={{ ...S.logo, textDecoration: "none" }} title="Back to site">
           <div style={S.logoMark}>A</div>
           {!sidebarCollapsed && (
             <div>
@@ -130,7 +130,7 @@ export function AdminShell({ children, userEmail }: { children: React.ReactNode;
               <p style={{ color: "#4A5A7A", fontSize: "9px", letterSpacing: "0.16em", margin: 0, textTransform: "uppercase" }}>Admin Studio</p>
             </div>
           )}
-        </a>
+        </Link>
 
         {/* Nav */}
         <nav style={S.nav}>

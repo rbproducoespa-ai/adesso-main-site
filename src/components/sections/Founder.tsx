@@ -77,7 +77,7 @@ export function FounderSection({
             </p>
             <p className="text-[#111111] font-medium">
               Today ADESSO operates across four divisions. The company remains founder-led, direct, and
-              deliberately small — because that's what produces better work.
+              deliberately small — because that&apos;s what produces better work.
             </p>
 
             {/* Stats */}

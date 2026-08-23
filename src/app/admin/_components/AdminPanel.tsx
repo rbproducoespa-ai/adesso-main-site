@@ -734,7 +734,7 @@ function OrdersSection({ orders }: { orders: Order[] }) {
     <div style={{ background: "white", border: "1px solid #E2DFDA", borderRadius: 2 }}>
       <div style={{ padding: "16px 20px", borderBottom: "1px solid #E2DFDA", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h2 style={{ fontSize: 14, fontWeight: 700, margin: 0 }}>All Orders ({orders.length})</h2>
-        <a href="/admin/orders" style={{ fontSize: 12, color: "#0066FF", textDecoration: "none", fontWeight: 600 }}>Full Orders Page →</a>
+        <Link href="/admin/orders" style={{ fontSize: 12, color: "#0066FF", textDecoration: "none", fontWeight: 600 }}>Full Orders Page →</Link>
       </div>
 
       {/* Table header */}
@@ -829,7 +829,7 @@ function SettingsSection() {
         <h3 style={{ fontSize: 15, fontWeight: 700, margin: "0 0 12px" }}>Account</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <a href="/auth/login" style={{ fontSize: 13, color: "#0066FF", textDecoration: "none", fontWeight: 600 }}>Change Password →</a>
-          <a href="/" style={{ fontSize: 13, color: "#5C5C5C", textDecoration: "none" }}>← Back to Site</a>
+          <Link href="/" style={{ fontSize: 13, color: "#5C5C5C", textDecoration: "none" }}>← Back to Site</Link>
         </div>
       </div>
     </div>
