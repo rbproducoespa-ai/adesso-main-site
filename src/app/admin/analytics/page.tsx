@@ -17,7 +17,7 @@ export default async function AnalyticsPage() {
     supabase.from("orders").select("amount_pence,created_at").eq("status", "paid").order("created_at", { ascending: false }).limit(50),
   ]);
 
-  const totalRevenue = (recentOrders ?? []).reduce((sum, o) => sum + Number(o.amount_pence || 0), 0);
+  const totalRevenue = (recentOrders ?? []).reduce((sum: number, o: { amount_pence?: number | null }) => sum + Number(o.amount_pence || 0), 0);
   const avgOrderValue = paidOrders ? Math.round(totalRevenue / paidOrders) : 0;
 
   // Monthly revenue (last 6 months)

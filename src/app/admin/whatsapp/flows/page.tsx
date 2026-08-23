@@ -39,11 +39,11 @@ export default async function FlowsPage() {
         </div>
       )}
 
-      {flows?.map((f) => {
+      {flows?.map((f: { id: string; nodes?: unknown; is_active?: boolean; name?: string; description?: string | null }) => {
         const nodeCount = Array.isArray(f.nodes) ? (f.nodes as unknown[]).length : 0;
         return (
           <div key={f.id} style={S.card}>
-            <div style={S.dot(f.is_active)} />
+            <div style={S.dot(Boolean(f.is_active))} />
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={S.name}>{f.name}</p>
               <p style={S.meta}>

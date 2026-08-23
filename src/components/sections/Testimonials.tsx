@@ -37,7 +37,7 @@ function TestimonialCard({
     <div className="bg-white border border-[#E2DFDA] p-8 flex flex-col gap-5">
       <div className="text-[#8C7355] text-sm tracking-wide">★★★★★</div>
       <p className="text-[#5C5C5C] italic text-[14px] leading-relaxed flex-1">
-        "{text}"
+        &ldquo;{text}&rdquo;
       </p>
       <div className="flex items-center gap-3 pt-2 border-t border-[#E2DFDA]">
         <Avatar photo={photo} name={name} />

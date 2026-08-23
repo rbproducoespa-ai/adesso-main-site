@@ -13,7 +13,7 @@ export default async function InboxPage() {
     .limit(50);
 
   const msgs = messages ?? [];
-  const unread = msgs.filter(m => !m.read).length;
+  const unread = msgs.filter((m: { read?: boolean | null }) => !m.read).length;
 
   return (
     <div style={{ padding: "28px 32px" }}>

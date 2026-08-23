@@ -46,6 +46,10 @@ function createMockClient() {
     },
     auth: {
       getUser: () => Promise.resolve({ data: { user: null }, error: null }),
+      admin: {
+        listUsers: () => Promise.resolve({ data: { users: [] }, error: null }),
+        getUserById: () => Promise.resolve({ data: { user: null }, error: null }),
+      },
     },
     rpc: () => chain(),
   } as any;

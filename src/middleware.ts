@@ -45,8 +45,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Protect /admin routes — must be logged in AND be an admin email
-  if (path.startsWith("/admin")) {
+  // Protect /admin and /network routes — must be logged in AND be an admin email
+  if (path.startsWith("/admin") || path.startsWith("/network")) {
     if (!user) {
       const loginUrl = new URL("/auth/login", request.url);
       loginUrl.searchParams.set("next", path);
@@ -62,5 +62,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/account/:path*", "/admin/:path*"],
+  matcher: ["/account/:path*", "/admin/:path*", "/network/:path*"],
 };

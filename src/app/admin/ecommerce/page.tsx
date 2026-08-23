@@ -32,8 +32,8 @@ export default async function EcommercePage() {
   ]);
 
   const revenue = (orders ?? [])
-    .filter(o => o.status === "paid" || o.status === "delivered")
-    .reduce((s, o) => s + Number(o.amount_pence || 0), 0);
+    .filter((o: { status?: string | null }) => o.status === "paid" || o.status === "delivered")
+    .reduce((s: number, o: { amount_pence?: number | null }) => s + Number(o.amount_pence || 0), 0);
 
   return (
     <div style={{ padding: "28px 32px" }}>
