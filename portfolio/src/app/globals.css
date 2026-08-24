@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Design system — "technical sheet meets gallery".
+  Light paper ground, hairline rules, monospace annotations borrowed from
+  production drawings, with large image plates carrying the work.
+
+  Every colour is a token. Themes swap tokens only, never component rules,
+  so the un-stamped (system-preference) state resolves as a complete set.
+*/
+
+@layer base {
+  :root {
+    --paper: 244 244 241;
+    --surface: 250 250 248;
+    --raised: 237 238 233;
+    --ink: 20 22 25;
+    --ink-2: 88 95 102;
+    --ink-3: 139 146 153;
+    --rule: 220 221 216;
+    --rule-strong: 180 183 177;
+
+    /* Default accent — overridden per division via [data-accent] below. */
+    --accent: 180 61 38;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: 17 18 20;
+      --surface: 23 25 28;
+      --raised: 30 33 37;
+      --ink: 232 233 229;
+      --ink-2: 158 165 172;
+      --ink-3: 113 120 127;
+      --rule: 43 47 52;
+      --rule-strong: 62 68 74;
+      --accent: 224 118 91;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: 17 18 20;
+    --surface: 23 25 28;
+    --raised: 30 33 37;
+    --ink: 232 233 229;
+    --ink-2: 158 165 172;
+    --ink-3: 113 120 127;
+    --rule: 43 47 52;
+    --rule-strong: 62 68 74;
+    --accent: 224 118 91;
+  }
+
+  /*
+    Per-division accents. Same pigment family, same value range, so the four
+    divisions read as siblings while each page still owns a colour.
+    Dark variants are lifted so they hold contrast on the dark ground.
+  */
+  [data-accent="exhibition"] { --accent: 180 61 38; }   /* oxide red */
+  [data-accent="creative"]   { --accent: 160 101 28; }  /* burnt amber */
+  [data-accent="ai"]         { --accent: 46 74 125; }   /* deep indigo */
+  [data-accent="audio"]      { --accent: 34 87 74; }    /* forest teal */
+  [data-accent="local"]      { --accent: 74 81 87; }    /* graphite */
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) [data-accent="exhibition"] { --accent: 224 118 91; }
+    :root:not([data-theme="light"]) [data-accent="creative"]   { --accent: 213 160 79; }
+    :root:not([data-theme="light"]) [data-accent="ai"]         { --accent: 138 172 219; }
+    :root:not([data-theme="light"]) [data-accent="audio"]      { --accent: 113 183 158; }
+    :root:not([data-theme="light"]) [data-accent="local"]      { --accent: 155 163 170; }
+  }
+
+  :root[data-theme="dark"] [data-accent="exhibition"] { --accent: 224 118 91; }
+  :root[data-theme="dark"] [data-accent="creative"]   { --accent: 213 160 79; }
+  :root[data-theme="dark"] [data-accent="ai"]         { --accent: 138 172 219; }
+  :root[data-theme="dark"] [data-accent="audio"]      { --accent: 113 183 158; }
+  :root[data-theme="dark"] [data-accent="local"]      { --accent: 155 163 170; }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: rgb(var(--paper));
+    color: rgb(var(--ink));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent) / 0.22);
+  }
+
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  .sheet {
+    @apply mx-auto w-full max-w-sheet px-5 sm:px-8 lg:px-12;
+  }
+
+  .band {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .band-tight {
+    @apply py-12 sm:py-16;
+  }
+
+  /* ── Annotation type, borrowed from drawing callouts ──────────────────── */
+  .label {
+    @apply font-mono text-[10px] uppercase tracking-label text-ink-3;
+  }
+
+  .label-accent {
+    @apply font-mono text-[10px] uppercase tracking-label text-accent;
+  }
+
+  .figure {
+    @apply font-mono tabular-nums;
+  }
+
+  /* ── Headings ─────────────────────────────────────────────────────────── */
+  .h-display {
+    @apply text-[2rem] leading-[1.08] sm:text-[2.75rem] lg:text-[3.5rem]
+           font-semibold tracking-[-0.025em] text-balance;
+  }
+
+  .h-section {
+    @apply text-[1.5rem] sm:text-[1.875rem] font-semibold tracking-[-0.02em] text-balance;
+  }
+
+  .h-card {
+    @apply text-[1.0625rem] font-semibold tracking-[-0.01em];
+  }
+
+  .lede {
+    @apply text-[1.0625rem] sm:text-[1.1875rem] leading-relaxed text-ink-2 max-w-prose;
+  }
+
+  .body-text {
+    @apply text-[0.9375rem] leading-relaxed text-ink-2 max-w-prose;
+  }
+
+  /* ── Rules ────────────────────────────────────────────────────────────── */
+  .rule-top {
+    @apply border-t border-rule;
+  }
+
+  .section-head {
+    @apply flex items-baseline gap-3 border-b border-ink pb-2 mb-8;
+  }
+
+  /* ── Controls ─────────────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-label
+           px-4 py-2.5 transition-colors duration-150;
+  }
+
+  .btn-solid {
+    @apply btn bg-accent text-paper hover:opacity-90;
+  }
+
+  .btn-ghost {
+    @apply btn border border-rule-strong text-ink hover:border-ink;
+  }
+
+  .link-underline {
+    @apply underline decoration-1 underline-offset-4 decoration-rule-strong
+           hover:decoration-accent transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Wide content scrolls inside its own container, never the page body. */
+  .scroll-x {
+    @apply overflow-x-auto;
+    scrollbar-width: thin;
+  }
+}
